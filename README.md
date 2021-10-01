@@ -5,7 +5,7 @@ This plugin provides an implementation of the Gerrit global ref-db backed by
 
 Requirements for using this plugin are:
 
-- Gerrit v3.2 or later
+- Gerrit v3.3 or later
 - DynamoDB provisioned in AWS
 
 ## Typical use-case
