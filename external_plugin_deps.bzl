@@ -66,6 +66,12 @@ def external_plugin_deps():
     )
 
     maven_jar(
+        name = "jackson-annotations",
+        artifact = "com.fasterxml.jackson.core:jackson-annotations:" + JACKSON_VER,
+        sha1 = "6ae6028aff033f194c9710ad87c224ccaadeed6c",
+    )
+
+    maven_jar(
         name = "joda-time",
         artifact = "joda-time:joda-time:2.10.10",
         sha1 = "29e8126e31f41e5c12b9fe3a7eb02e704c47d70b",
