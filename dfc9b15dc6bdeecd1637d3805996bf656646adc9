@@ -16,6 +16,24 @@
       "message": "not sure if that is the real issue behind the V-1 but it seems that `lib/testcontainers` is no longer exposed on `master` either...",
       "revId": "dfc9b15dc6bdeecd1637d3805996bf656646adc9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8349be1d_70f77f3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2022-01-13T19:38:45Z",
+      "side": 1,
+      "message": "Yes I already addressed  that: https://gerrit-review.googlesource.com/c/plugins/aws-dynamodb-refdb/+/328083",
+      "parentUuid": "9618eb62_81b6d67e",
+      "revId": "dfc9b15dc6bdeecd1637d3805996bf656646adc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
