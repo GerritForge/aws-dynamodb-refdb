@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2b530d_ffd16abe",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2022-01-13T19:39:46Z",
+      "side": 1,
+      "message": "nit: weird formatting",
+      "revId": "0c09b83300c8501f0d49046d24885e4c8ae3be94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434d4a57_0dad4694",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2022-01-13T19:39:46Z",
+      "side": 1,
+      "message": "nit: is this change related?",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 5
+      },
+      "revId": "0c09b83300c8501f0d49046d24885e4c8ae3be94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2c8600_045202d5",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2022-01-13T19:39:46Z",
+      "side": 1,
+      "message": "nit: is this change related?",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 5
+      },
+      "revId": "0c09b83300c8501f0d49046d24885e4c8ae3be94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
