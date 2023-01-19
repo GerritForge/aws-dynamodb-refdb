@@ -56,5 +56,6 @@ java_library(
         "@testcontainer-localstack//jar",
         "@aws-java-sdk-dynamodb//jar",
         "@global-refdb//jar",
+        "@dynamodb-lock-client//jar",
     ],
 )

@@ -29,6 +29,7 @@ import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
+import com.google.gerrit.metrics.Timer0.Context;
 import com.google.inject.Inject;
 import java.util.Optional;
 import javax.inject.Singleton;
@@ -48,15 +49,18 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
   private final AmazonDynamoDBLockClient lockClient;
   private final AmazonDynamoDB dynamoDBClient;
   private final Configuration configuration;
+  private DynamoDBRefDatabaseMetrics metrics;
 
   @Inject
   DynamoDBRefDatabase(
       AmazonDynamoDBLockClient lockClient,
       AmazonDynamoDB dynamoDBClient,
-      Configuration configuration) {
+      Configuration configuration,
+      DynamoDBRefDatabaseMetrics metrics) {
     this.lockClient = lockClient;
     this.dynamoDBClient = dynamoDBClient;
     this.configuration = configuration;
+    this.metrics = metrics;
   }
 
   static String pathFor(Project.NameKey projectName, String refName) {
@@ -126,7 +130,9 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
                     "attribute_not_exists(%s) OR %s = :old_value",
                     REF_DB_PRIMARY_KEY, REF_DB_VALUE_KEY));
     try {
+      Context context = metrics.startCompareAndPutExecutionTime();
       dynamoDBClient.updateItem(updateItemRequest);
+      context.stop();
       logger.atFine().log(
           "Updated path for project %s. Current: %s New: %s",
           project.get(), currValueForPath, newValueForPath);
@@ -155,8 +161,10 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
       // additionalTimeToWaitForLock is reached.
       // TODO: 'additionalTimeToWaitForLock' should be configurable
       // Hydrate with instanceId and ServerId and CurrentUser and Thread
+      Context context = metrics.startLockRefExecutionTime();
       LockItem lockItem =
           lockClient.acquireLock(AcquireLockOptions.builder(refPath).withSortKey(refPath).build());
+      context.stop();
       logger.atFine().log("Acquired lock for %s", refPath);
       return lockItem;
     } catch (InterruptedException e) {
@@ -215,10 +223,14 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
   }
 
   private GetItemResult getPathFromDynamoDB(Project.NameKey project, String refName) {
-    return dynamoDBClient.getItem(
-        configuration.getRefsDbTableName(),
-        ImmutableMap.of(REF_DB_PRIMARY_KEY, new AttributeValue(pathFor(project, refName))),
-        true);
+    Context context = metrics.startGetPathExecutionTime();
+    GetItemResult result =
+        dynamoDBClient.getItem(
+            configuration.getRefsDbTableName(),
+            ImmutableMap.of(REF_DB_PRIMARY_KEY, new AttributeValue(pathFor(project, refName))),
+            true);
+    context.stop();
+    return result;
   }
 
   private boolean exists(GetItemResult result) {
