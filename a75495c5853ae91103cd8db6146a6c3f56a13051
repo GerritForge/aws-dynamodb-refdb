@@ -33,6 +33,24 @@
       "message": "Why not introducing this in the global-refdb project instead?",
       "revId": "a75495c5853ae91103cd8db6146a6c3f56a13051",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "956f88f7_ad17f0d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-01-19T21:13:09Z",
+      "side": 1,
+      "message": "global-refdb is deployed as a Gerrit library so we cannot inject MetricsMaker using guice because it\u0027s not available yet. We have the same approach in events-broker. Each plugin has it\u0027s own metrics. For example in events-broker we expose interface which has to be implemented in each plugin I9bf739b0b1fdc09862b9ff276ed52c1900f2e7be",
+      "parentUuid": "1c29d55c_c0a64acb",
+      "revId": "a75495c5853ae91103cd8db6146a6c3f56a13051",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
