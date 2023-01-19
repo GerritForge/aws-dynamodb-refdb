@@ -16,6 +16,23 @@
       "message": "Build failure was caused by timeout, reruning",
       "revId": "a75495c5853ae91103cd8db6146a6c3f56a13051",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c29d55c_c0a64acb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-01-19T21:05:45Z",
+      "side": 1,
+      "message": "Why not introducing this in the global-refdb project instead?",
+      "revId": "a75495c5853ae91103cd8db6146a6c3f56a13051",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
