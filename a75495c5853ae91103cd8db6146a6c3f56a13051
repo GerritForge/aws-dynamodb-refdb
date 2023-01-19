@@ -51,6 +51,24 @@
       "parentUuid": "1c29d55c_c0a64acb",
       "revId": "a75495c5853ae91103cd8db6146a6c3f56a13051",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeb61c17_f2f980b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2023-01-19T21:26:41Z",
+      "side": 1,
+      "message": "`cache-chroniclemap` is a library and we have metrics there ;) I\u0027m not saying that it is doable but I wouldn\u0027t cross it out...",
+      "parentUuid": "956f88f7_ad17f0d9",
+      "revId": "a75495c5853ae91103cd8db6146a6c3f56a13051",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
