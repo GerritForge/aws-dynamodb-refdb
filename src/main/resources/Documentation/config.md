@@ -10,6 +10,7 @@ The dynamodb-refdb plugin is configured by adding a plugin stanza in the
     endpoint = http://localhost:4566
     locksTableName = lockTable
     refsDbTableName = refsDb
+    profileName = aws-dynamodb-refdb
 ```
 
 `plugin.aws-dynamodb-refdb.region`
@@ -32,5 +33,12 @@ See [DynamoDB lock client](https://github.com/awslabs/amazon-dynamodb-lock-clien
 `plugin.aws-dynamodb-refdb.locksTableName`
 :   Optional. The name of the dynamoDB table used to store git refs and their
 associated sha1.
+
+`plugin.aws-dynamodb-refdb.profileName`
+:   Optional. The name of the aws configuration and credentials profile used to
+connect to the DynamoDb. See [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+Default: When not specified credentials are provided via the Default Credential
+Provider Chain, as explained [here](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html)
+
 
 
