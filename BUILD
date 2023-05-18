@@ -17,6 +17,7 @@ gerrit_plugin(
     ],
     resources = glob(["src/main/resources/**/*"]),
     deps = [
+        "//plugins/global-refdb",
         "@amazon-aws-core//jar",
         "@amazon-dynamodb//jar",
         "@amazon-regions//jar",
@@ -25,7 +26,6 @@ gerrit_plugin(
         "@aws-java-sdk-core//jar",
         "@aws-java-sdk-dynamodb//jar",
         "@dynamodb-lock-client//jar",
-        "@global-refdb//jar",
         "@jackson-annotations//jar",
         "@jackson-databind//jar",
         "@jackson-dataformat-cbor//jar",
@@ -55,6 +55,6 @@ java_library(
         "//lib/testcontainers:docker-java-transport",
         "@testcontainer-localstack//jar",
         "@aws-java-sdk-dynamodb//jar",
-        "@global-refdb//jar",
+        "//plugins/global-refdb",
     ],
 )
