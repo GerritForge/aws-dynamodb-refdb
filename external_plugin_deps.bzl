@@ -76,9 +76,3 @@ def external_plugin_deps():
         artifact = "org.testcontainers:localstack:1.15.2",
         sha1 = "ae3c4717bc5f37410abbb490cb46d349a77990a0",
     )
-
-    maven_jar(
-        name = "global-refdb",
-        artifact = "com.gerritforge:global-refdb:3.3.2.1",
-        sha1 = "00b6b0f39b3c8fc280a19d91fb0681954ebccd02",
-    )
