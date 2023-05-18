@@ -66,24 +66,34 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
   @Override
   public boolean isUpToDate(Project.NameKey project, Ref ref) throws GlobalRefDbLockException {
     try {
-      GetItemResult result = getPathFromDynamoDB(project, ref.getName());
-      if (!exists(result)) {
-        return true;
-      }
-
-      String valueInDynamoDB = result.getItem().get(REF_DB_VALUE_KEY).getS();
-      ObjectId objectIdInSharedRefDb = ObjectId.fromString(valueInDynamoDB);
-      boolean isUpToDate = objectIdInSharedRefDb.equals(ref.getObjectId());
-
-      if (!isUpToDate) {
-        logger.atWarning().log(
-            "%s:%s is out of sync: local=%s dynamodb=%s",
-            project, ref.getName(), ref.getObjectId(), objectIdInSharedRefDb);
-      }
-      return isUpToDate;
+      return isUpToDateUncheckedInternal(project, ref, true);
     } catch (Exception e) {
       throw new GlobalRefDbLockException(project.get(), ref.getName(), e);
     }
+  }
+
+  @Override
+  public boolean isUpToDateUnchecked(Project.NameKey project, Ref ref) {
+    return isUpToDateUncheckedInternal(project, ref, false);
+  }
+
+  private boolean isUpToDateUncheckedInternal(
+      Project.NameKey project, Ref ref, boolean showWarning) {
+    GetItemResult result = getPathFromDynamoDB(project, ref.getName());
+    if (!exists(result)) {
+      return true;
+    }
+
+    String valueInDynamoDB = result.getItem().get(REF_DB_VALUE_KEY).getS();
+    ObjectId objectIdInSharedRefDb = ObjectId.fromString(valueInDynamoDB);
+    boolean isUpToDate = isUpToDateUnchecked(project, ref);
+
+    if (showWarning && !isUpToDate) {
+      logger.atWarning().log(
+          "%s:%s is out of sync: local=%s dynamodb=%s",
+          project, ref.getName(), ref.getObjectId(), objectIdInSharedRefDb);
+    }
+    return isUpToDate;
   }
 
   @Override
