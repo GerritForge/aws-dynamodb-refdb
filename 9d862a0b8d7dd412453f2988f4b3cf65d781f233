@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23761147_7861a7d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-05-19T04:37:04Z",
+      "side": 1,
+      "message": "Build failure is related to consuming `global-refdb` from source.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 79
+      },
+      "revId": "9d862a0b8d7dd412453f2988f4b3cf65d781f233",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352bf0b6_baccebd7",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-05-19T04:37:04Z",
+      "side": 1,
+      "message": "Mismatch between `plugins` vs. `modules` directories. \n\nIn the build pipeline we have already the possibility to add additional plugins using recently introduced `extraPlugins` parameter:\n\n```\nextraPlugins.each { plugin -\u003e sh \"git clone -b ${GERRIT_BRANCH} ${pluginScmBaseUrl}/plugins/${plugin}\" }\n```\n\nHowever the new `extraModules` would add them to `modules` directory:\n\n```\nextraModules.each { module -\u003e sh \"git clone -b ${GERRIT_BRANCH} ${pluginScmBaseUrl}/modules/${module}\"\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "9d862a0b8d7dd412453f2988f4b3cf65d781f233",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102916b8_a8c11f83",
+        "filename": "Jenkinsfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-05-19T04:37:04Z",
+      "side": 1,
+      "message": "`extraPlugins: [\u0027extraPlugins\u0027]`?",
+      "range": {
+        "startLine": 3,
+        "startChar": 15,
+        "endLine": 3,
+        "endChar": 47
+      },
+      "revId": "9d862a0b8d7dd412453f2988f4b3cf65d781f233",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
