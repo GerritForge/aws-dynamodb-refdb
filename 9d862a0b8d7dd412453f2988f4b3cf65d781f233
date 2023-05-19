@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c94e1bd_df58d03d",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-05-19T08:01:02Z",
+      "side": 1,
+      "message": "Why this complexity? Until we have support in Gerrit for `gerrit_module()` rule, we could link also gerrit modules into plugins directory.\n\nThis is also related to Eclipse project generation.\n\nWe only have `CUSTOM_PLUGINS`, but not `CUSTOM_MODULES`.",
+      "parentUuid": "d34700c9_c2a46575",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "9d862a0b8d7dd412453f2988f4b3cf65d781f233",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "102916b8_a8c11f83",
         "filename": "Jenkinsfile",
         "patchSetId": 3
