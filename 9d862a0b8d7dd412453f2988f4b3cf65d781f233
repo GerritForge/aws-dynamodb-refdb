@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a604112d_82e5e31f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-05-19T07:21:51Z",
+      "side": 1,
+      "message": "Yep, it won\u0027t succeed until we get Change 374435 merged.",
+      "parentUuid": "23761147_7861a7d5",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 79
+      },
+      "revId": "9d862a0b8d7dd412453f2988f4b3cf65d781f233",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "352bf0b6_baccebd7",
         "filename": "BUILD",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d34700c9_c2a46575",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-05-19T07:21:51Z",
+      "side": 1,
+      "message": "Yep, and then a symbolic link from modules points to plugins.",
+      "parentUuid": "352bf0b6_baccebd7",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "9d862a0b8d7dd412453f2988f4b3cf65d781f233",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "102916b8_a8c11f83",
         "filename": "Jenkinsfile",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-19T04:37:04Z",
       "side": 1,
       "message": "`extraPlugins: [\u0027extraPlugins\u0027]`?",
+      "range": {
+        "startLine": 3,
+        "startChar": 15,
+        "endLine": 3,
+        "endChar": 47
+      },
+      "revId": "9d862a0b8d7dd412453f2988f4b3cf65d781f233",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e305034_cd73e338",
+        "filename": "Jenkinsfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-05-19T07:21:51Z",
+      "side": 1,
+      "message": "Nope, the new parameter is called `extraModules`:\nhttps://gerrit-review.googlesource.com/c/gerrit-ci-scripts/+/374435/1/vars/pluginPipeline.groovy#38",
+      "parentUuid": "102916b8_a8c11f83",
       "range": {
         "startLine": 3,
         "startChar": 15,
