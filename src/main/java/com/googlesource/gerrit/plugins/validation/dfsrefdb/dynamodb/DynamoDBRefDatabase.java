@@ -112,6 +112,7 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
   private boolean doCompareAndPut(
       Project.NameKey project, String refPath, String currValueForPath, String newValueForPath)
       throws GlobalRefDbSystemError {
+
     UpdateItemRequest updateItemRequest =
         new UpdateItemRequest()
             .withTableName(configuration.getRefsDbTableName())
@@ -132,11 +133,10 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
           project.get(), currValueForPath, newValueForPath);
       return true;
     } catch (ConditionalCheckFailedException e) {
-      throw new GlobalRefDbSystemError(
-          String.format(
-              "Conditional Check Failure when updating refPath %s. expected: %s New: %s",
-              refPath, currValueForPath, newValueForPath),
-          e);
+      logger.atWarning().withCause(e).log(
+          "Conditional Check Failure when updating refPath %s. expected: %s New: %s",
+          refPath, currValueForPath, newValueForPath);
+      return false;
     } catch (Exception e) {
       throw new GlobalRefDbSystemError(
           String.format(
