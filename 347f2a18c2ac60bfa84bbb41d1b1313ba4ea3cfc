@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9cd6de_9e982ca6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T14:58:49Z",
+      "side": 1,
+      "message": "I would say: \n\"Change signature of computeAndPut to return false\"\n\nAnd in the next paragraph you can say that before was throwing an exception because ... but now....",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dd523d_41b33b55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T14:58:49Z",
+      "side": 1,
+      "message": "`expected value` instead of `expected valued`",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74028c4b_82b0bf6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T14:58:49Z",
+      "side": 1,
+      "message": "is it worth to add that signature to provide more context? maybe is too much.",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c029b275_20876083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T14:58:49Z",
+      "side": 1,
+      "message": "LGTM, small comments.",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00a7aa5_8090acae",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T14:58:49Z",
+      "side": 1,
+      "message": "do you have spaces here?",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
