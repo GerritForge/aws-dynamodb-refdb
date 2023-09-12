@@ -16,7 +16,6 @@ package com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
-import static com.google.gerrit.testing.GerritJUnit.assertThrows;
 import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_LOCKS_TABLE_NAME;
 import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_REFS_DB_TABLE_NAME;
 import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.DynamoDBRefDatabase.REF_DB_PRIMARY_KEY;
@@ -27,7 +26,6 @@ import static org.testcontainers.containers.localstack.LocalStackContainer.Servi
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
-import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.google.common.collect.ImmutableMap;
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.TestPlugin;
@@ -182,7 +180,7 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
   }
 
   @Test
-  public void compareAndPutShouldThrowWhenStoredRefIsNotExpected() {
+  public void compareAndPutShouldReturnFalseWhenStoredRefIsNotExpected() {
     String refName = "refs/changes/01/01/meta";
     String currentRefValue = "533d3ccf8a650fb26380faa732921a2c74924d5c";
     String newRefValue = "9f6f2963cf44505428c61b935ff1ca65372cf28c";
@@ -190,20 +188,10 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
     Ref expectedRef = refOf(refName, expectedRefValue);
 
     createRefInDynamoDB(project, refName, currentRefValue);
-
-    GlobalRefDbSystemError thrown =
-        assertThrows(
-            GlobalRefDbSystemError.class,
-            () ->
-                dynamoDBRefDatabase()
-                    .compareAndPut(project, expectedRef, ObjectId.fromString(newRefValue)));
-    assertThat(thrown)
-        .hasMessageThat()
-        .containsMatch(
-            "Conditional Check Failure when updating refPath.*expected:.*"
-                + expectedRefValue
-                + " New:.*"
-                + newRefValue);
+    assertThat(
+            dynamoDBRefDatabase()
+                .compareAndPut(project, expectedRef, ObjectId.fromString(newRefValue)))
+        .isFalse();
   }
 
   @Test
