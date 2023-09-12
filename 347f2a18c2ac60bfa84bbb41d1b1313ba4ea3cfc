@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c7eec1_6fdb9eaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-12T15:05:20Z",
+      "side": 1,
+      "message": "\u003e \"Change signature of computeAndPut to return false\"\n\nNope, signature stays the same. We always had boolean in the signature we just never return false. Only true or exception",
+      "parentUuid": "bd9cd6de_9e982ca6",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13dd523d_41b33b55",
@@ -35,6 +53,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b92c5b6_ba0f14bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-12T15:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13dd523d_41b33b55",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74028c4b_82b0bf6d",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-09-12T14:58:49Z",
       "side": 1,
       "message": "is it worth to add that signature to provide more context? maybe is too much.",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72326b5a_30dc1b83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-12T15:05:20Z",
+      "side": 1,
+      "message": "signature hasn\u0027t changed. Now we return false instead of throwing exception",
+      "parentUuid": "74028c4b_82b0bf6d",
       "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
@@ -82,6 +136,24 @@
       "writtenOn": "2023-09-12T14:58:49Z",
       "side": 1,
       "message": "do you have spaces here?",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d7fe857_09d35070",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-12T15:05:20Z",
+      "side": 1,
+      "message": "nope",
+      "parentUuid": "f00a7aa5_8090acae",
       "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
