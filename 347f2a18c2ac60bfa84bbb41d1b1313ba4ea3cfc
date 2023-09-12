@@ -108,6 +108,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e1ec6daa_75b5e0e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T15:11:32Z",
+      "side": 1,
+      "message": "I meant the signature of `contract defined in global-refdb `GlobalRefDatabase` interface.",
+      "parentUuid": "72326b5a_30dc1b83",
+      "revId": "347f2a18c2ac60bfa84bbb41d1b1313ba4ea3cfc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c029b275_20876083",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
