@@ -132,11 +132,10 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
           project.get(), currValueForPath, newValueForPath);
       return true;
     } catch (ConditionalCheckFailedException e) {
-      throw new GlobalRefDbSystemError(
-          String.format(
-              "Conditional Check Failure when updating refPath %s. expected: %s New: %s",
-              refPath, currValueForPath, newValueForPath),
-          e);
+      logger.atSevere().withCause(e).log(
+          "Conditional Check Failure when updating refPath %s. expected: %s New: %s",
+          refPath, currValueForPath, newValueForPath);
+      return false;
     } catch (Exception e) {
       throw new GlobalRefDbSystemError(
           String.format(
