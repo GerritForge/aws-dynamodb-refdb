@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0dc5ed9_c9639d02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2023-09-14T11:45:10Z",
+      "side": 1,
+      "message": "nit: perhaps it would be useful to link this [1]\n\n\n[1]https://review.gerrithub.io/plugins/gitiles/GerritForge/global-refdb/+/refs/heads/stable-3.4/src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java#56",
+      "range": {
+        "startLine": 11,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "3ea51b435b14c1d31d4e4a76439007e1c39fa838",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939fde17_f6e4f83a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2023-09-14T11:45:10Z",
+      "side": 1,
+      "message": "Good stuff @maczech@gmail.com",
+      "revId": "3ea51b435b14c1d31d4e4a76439007e1c39fa838",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
