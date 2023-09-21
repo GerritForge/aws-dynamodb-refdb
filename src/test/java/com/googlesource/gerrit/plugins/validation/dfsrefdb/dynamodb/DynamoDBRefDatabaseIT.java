@@ -18,15 +18,9 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
 import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_LOCKS_TABLE_NAME;
 import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_REFS_DB_TABLE_NAME;
-import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.DynamoDBRefDatabase.REF_DB_PRIMARY_KEY;
-import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.DynamoDBRefDatabase.REF_DB_VALUE_KEY;
-import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.DynamoDBRefDatabase.pathFor;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.DYNAMODB;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
-import com.google.common.collect.ImmutableMap;
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.acceptance.WaitUtil;
@@ -167,6 +161,39 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
   }
 
   @Test
+  public void putShouldBeSuccessfulWhenNoPreviousValueForRefExists() {
+    String refName = "refs/changes/01/01/meta";
+    String newRefValue = "533d3ccf8a650fb26380faa732921a2c74924d5c";
+
+    dynamoDBRefDatabase().put(project, refName, newRefValue);
+    Optional<String> result = dynamoDBRefDatabase().get(project, refName, String.class);
+    assertThat(result).hasValue(newRefValue);
+  }
+
+  @Test
+  public void putShouldSuccessfullyUpdateRemovedRef() {
+    String refName = "refs/changes/01/01/meta";
+    String newRefValue = null;
+
+    dynamoDBRefDatabase().put(project, refName, newRefValue);
+    Optional<String> result = dynamoDBRefDatabase().get(project, refName, String.class);
+    assertThat(result).hasValue(ObjectId.zeroId().getName());
+  }
+
+  @Test
+  public void putShouldBeSuccessfulWhenUpdatingRef() {
+    String refName = "refs/changes/01/01/meta";
+    String oldValue = "123";
+    String newValue = "345";
+    dynamoDBRefDatabase().put(project, refName, oldValue);
+
+    dynamoDBRefDatabase().put(project, refName, newValue);
+
+    Optional<String> result = dynamoDBRefDatabase().get(project, refName, String.class);
+    assertThat(result).hasValue(newValue);
+  }
+
+  @Test
   public void compareAndPutShouldSuccessfullyUpdateRemovedRef() throws Exception {
     String refName = "refs/changes/01/01/meta";
     String currentRefValue = "533d3ccf8a650fb26380faa732921a2c74924d5c";
@@ -223,16 +250,7 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
   }
 
   private void createRefInDynamoDB(Project.NameKey project, String refPath, String refValue) {
-    dynamoDBClient()
-        .putItem(
-            new PutItemRequest()
-                .withTableName(DEFAULT_REFS_DB_TABLE_NAME)
-                .withItem(
-                    ImmutableMap.of(
-                        REF_DB_PRIMARY_KEY,
-                        new AttributeValue(pathFor(project, refPath)),
-                        REF_DB_VALUE_KEY,
-                        new AttributeValue(refValue))));
+    dynamoDBRefDatabase().put(project, refPath, refValue);
   }
 
   private Ref refOf(String refName, @Nullable String objectIdSha1) {

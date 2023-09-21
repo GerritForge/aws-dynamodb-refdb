@@ -18,17 +18,20 @@ import com.amazonaws.services.dynamodbv2.AcquireLockOptions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBLockClient;
 import com.amazonaws.services.dynamodbv2.LockItem;
+import com.amazonaws.services.dynamodbv2.model.AttributeAction;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
 import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.dynamodbv2.model.GetItemResult;
 import com.amazonaws.services.dynamodbv2.model.LockNotGrantedException;
 import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
-import com.gerritforge.gerrit.globalrefdb.GlobalRefDatabase;
+import com.gerritforge.gerrit.globalrefdb.ExtendedGlobalRefDatabase;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
+import com.google.gerrit.entities.Project.NameKey;
 import com.google.inject.Inject;
 import java.util.Optional;
 import javax.inject.Singleton;
@@ -36,7 +39,7 @@ import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
 @Singleton
-public class DynamoDBRefDatabase implements GlobalRefDatabase {
+public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
 
   public static final String REF_DB_PRIMARY_KEY = "refPath";
   public static final String REF_DB_VALUE_KEY = "refValue";
@@ -141,6 +144,29 @@ public class DynamoDBRefDatabase implements GlobalRefDatabase {
           String.format(
               "Error updating refPath %s. expected: %s new: %s",
               project.get(), currValueForPath, newValueForPath),
+          e);
+    }
+  }
+
+  @Override
+  public <T> void put(NameKey project, String refName, T value) throws GlobalRefDbSystemError {
+    String refPath = pathFor(project, refName);
+    String refValue =
+        Optional.ofNullable(value).map(Object::toString).orElse(ObjectId.zeroId().getName());
+    try {
+      dynamoDBClient.updateItem(
+          configuration.getRefsDbTableName(),
+          ImmutableMap.of(REF_DB_PRIMARY_KEY, new AttributeValue(refPath)),
+          ImmutableMap.of(
+              REF_DB_VALUE_KEY,
+              new AttributeValueUpdate(new AttributeValue(refValue), AttributeAction.PUT)));
+      logger.atFine().log(
+          "Updated path for project %s, path %s, value: %s", project.get(), refPath, refValue);
+    } catch (Exception e) {
+      throw new GlobalRefDbSystemError(
+          String.format(
+              "Error updating path for project %s, path %s. value: %s",
+              project.get(), refPath, refValue),
           e);
     }
   }
