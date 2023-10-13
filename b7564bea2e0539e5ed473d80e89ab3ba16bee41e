@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3dd3fa5_ac41c631",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-10-13T13:43:51Z",
+      "side": 1,
+      "message": "nit: with event-broker we have this target at the end of the file.",
+      "revId": "b7564bea2e0539e5ed473d80e89ab3ba16bee41e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
