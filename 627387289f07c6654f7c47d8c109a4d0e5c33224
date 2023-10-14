@@ -16,6 +16,46 @@
       "message": "Can we add why this is useful?",
       "revId": "627387289f07c6654f7c47d8c109a4d0e5c33224",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4046c30e_7d55824f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2023-10-14T21:07:20Z",
+      "side": 1,
+      "message": "nit: consider adding a test where value is null and test that the Zero ID is correctly written in dynamo",
+      "revId": "627387289f07c6654f7c47d8c109a4d0e5c33224",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c16a4cda_681c54ae",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabaseIT.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2023-10-14T21:07:20Z",
+      "side": 1,
+      "message": "nit: noPreviousValueForRefExists",
+      "range": {
+        "startLine": 164,
+        "startChar": 49,
+        "endLine": 164,
+        "endChar": 52
+      },
+      "revId": "627387289f07c6654f7c47d8c109a4d0e5c33224",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
