@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27959aa_90ff09ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-10-16T13:48:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b75cab0_1bd10f84",
+      "revId": "627387289f07c6654f7c47d8c109a4d0e5c33224",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4046c30e_7d55824f",
@@ -35,6 +53,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e150eaa_f280c26b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-10-16T13:48:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4046c30e_7d55824f",
+      "revId": "627387289f07c6654f7c47d8c109a4d0e5c33224",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c16a4cda_681c54ae",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-10-14T21:07:20Z",
       "side": 1,
       "message": "nit: noPreviousValueForRefExists",
+      "range": {
+        "startLine": 164,
+        "startChar": 49,
+        "endLine": 164,
+        "endChar": 52
+      },
+      "revId": "627387289f07c6654f7c47d8c109a4d0e5c33224",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3811cb5_19985395",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabaseIT.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-10-16T13:48:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c16a4cda_681c54ae",
       "range": {
         "startLine": 164,
         "startChar": 49,
