@@ -14,7 +14,9 @@
 
 package com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb;
 
+import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.DefaultAwsRegionProviderChain;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -48,6 +50,13 @@ class AmazonDynamoDBProvider implements Provider<AmazonDynamoDB> {
             endpoint ->
                 builder.withEndpointConfiguration(
                     new AwsClientBuilder.EndpointConfiguration(endpoint.toASCIIString(), region)));
-    return builder.withCredentials(new DefaultAWSCredentialsProviderChain()).build();
+    return builder.withCredentials(getCredentialsProvider()).build();
+  }
+
+  private AWSCredentialsProvider getCredentialsProvider() {
+    return configuration
+        .getAwsConfigurationProfileName()
+        .<AWSCredentialsProvider>map(ProfileCredentialsProvider::new)
+        .orElse(new DefaultAWSCredentialsProviderChain());
   }
 }

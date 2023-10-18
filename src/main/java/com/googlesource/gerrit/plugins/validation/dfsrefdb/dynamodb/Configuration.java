@@ -34,6 +34,7 @@ class Configuration {
   private final Optional<URI> endpoint;
   private final String refsDbTableName;
   private final String locksTableName;
+  private final Optional<String> awsConfigurationProfileName;
 
   @Inject
   Configuration(PluginConfigFactory configFactory, @PluginName String pluginName) {
@@ -44,12 +45,14 @@ class Configuration {
     // TODO: add prefix
     this.refsDbTableName = pluginConfig.getString("refsDbTableName", DEFAULT_REFS_DB_TABLE_NAME);
     this.locksTableName = pluginConfig.getString("locksTableName", DEFAULT_LOCKS_TABLE_NAME);
+    this.awsConfigurationProfileName = Optional.ofNullable(pluginConfig.getString("profileName"));
     logger.atInfo().log(
-        "dynamodb-refdb configuration: refsDbTableName: %s|locksTableName:%s%s%s",
+        "dynamodb-refdb configuration: refsDbTableName: %s|locksTableName:%s%s%s%s",
         refsDbTableName,
         locksTableName,
         region.map(r -> String.format("|region: %s", r.id())).orElse(""),
-        endpoint.map(e -> String.format("|endpoint: %s", e.toASCIIString())).orElse(""));
+        endpoint.map(e -> String.format("|endpoint: %s", e.toASCIIString())).orElse(""),
+        awsConfigurationProfileName.map(p -> String.format("|profile: %s", p)).orElse(""));
   }
 
   Optional<Region> getRegion() {
@@ -72,5 +75,9 @@ class Configuration {
 
   String getLocksTableName() {
     return locksTableName;
+  }
+
+  Optional<String> getAwsConfigurationProfileName() {
+    return awsConfigurationProfileName;
   }
 }
