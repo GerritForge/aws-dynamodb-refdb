@@ -101,6 +101,26 @@ public class ConfigurationTest {
   }
 
   @Test
+  public void shouldReadEmptyAwsConfigurationProfileNameByDefault() {
+    when(pluginConfigFactoryMock.getFromGerritConfig(PLUGIN_NAME))
+        .thenReturn(pluginConfig.asPluginConfig());
+
+    Configuration configuration = new Configuration(pluginConfigFactoryMock, PLUGIN_NAME);
+    assertThat(configuration.getAwsConfigurationProfileName().isPresent()).isFalse();
+  }
+
+  @Test
+  public void shouldReadConfiguredAwsConfigurationProfileName() {
+    String profileName = "aws-dynamodb-refdb";
+    pluginConfig.setString("profileName", profileName);
+    when(pluginConfigFactoryMock.getFromGerritConfig(PLUGIN_NAME))
+        .thenReturn(pluginConfig.asPluginConfig());
+
+    Configuration configuration = new Configuration(pluginConfigFactoryMock, PLUGIN_NAME);
+    assertThat(configuration.getAwsConfigurationProfileName().get()).isEqualTo(profileName);
+  }
+
+  @Test
   public void shouldReadEmptyRegionByDefault() {
     when(pluginConfigFactoryMock.getFromGerritConfig(PLUGIN_NAME))
         .thenReturn(pluginConfig.asPluginConfig());
