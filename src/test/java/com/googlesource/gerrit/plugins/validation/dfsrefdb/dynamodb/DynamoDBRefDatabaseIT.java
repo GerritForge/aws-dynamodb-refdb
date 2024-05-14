@@ -15,12 +15,12 @@
 package com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth8.assertThat;
 import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_LOCKS_TABLE_NAME;
 import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_REFS_DB_TABLE_NAME;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.DYNAMODB;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.acceptance.WaitUtil;
@@ -130,7 +130,8 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
   }
 
   @Test
-  public void isUpToDateShouldReturnFalseWhenRefDoesNotPointToTheStoredRefValue() {
+  public void isUpToDateShouldReturnFalseWhenRefDoesNotPointToTheStoredRefValue()
+      throws GlobalRefDbLockException {
     String refName = "refs/changes/01/01/meta";
     String currentRefValue = "533d3ccf8a650fb26380faa732921a2c74924d5c";
     String previousRefValue = "9f6f2963cf44505428c61b935ff1ca65372cf28c";
@@ -142,7 +143,8 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
   }
 
   @Test
-  public void isUpToDateShouldBeConsideredTrueWhenNoPreviousRefExists() {
+  public void isUpToDateShouldBeConsideredTrueWhenNoPreviousRefExists()
+      throws GlobalRefDbLockException {
     String refName = "refs/changes/01/01/meta";
     String currentRefValue = "533d3ccf8a650fb26380faa732921a2c74924d5c";
 
