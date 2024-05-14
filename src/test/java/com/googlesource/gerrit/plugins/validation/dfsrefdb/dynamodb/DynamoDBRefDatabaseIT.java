@@ -49,6 +49,7 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
           .withExposedPorts(LOCALSTACK_PORT);
 
   @Before
+  @Override
   public void setUpTestPlugin() throws Exception {
     localstack.start();
 
