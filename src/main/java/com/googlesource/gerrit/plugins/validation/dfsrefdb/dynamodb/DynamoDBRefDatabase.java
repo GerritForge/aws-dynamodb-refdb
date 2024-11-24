@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb;
 
+import static java.util.stream.Collectors.toMap;
+
 import com.amazonaws.services.dynamodbv2.AcquireLockOptions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBLockClient;
@@ -21,9 +23,12 @@ import com.amazonaws.services.dynamodbv2.LockItem;
 import com.amazonaws.services.dynamodbv2.model.AttributeAction;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.dynamodbv2.model.GetItemResult;
 import com.amazonaws.services.dynamodbv2.model.LockNotGrantedException;
+import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 import com.gerritforge.gerrit.globalrefdb.ExtendedGlobalRefDatabase;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
@@ -33,7 +38,10 @@ import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.entities.Project.NameKey;
 import com.google.inject.Inject;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Stream;
 import javax.inject.Singleton;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
@@ -216,6 +224,15 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
     // TODO: to remove all refs related to project we'd need to be able to query
     // dynamodb by 'project': perhaps we should have a composite key of:
     // PK: project, SK: ref
+    Stream<Map<String, String>> items = scanItems("/" + project.get() + "/");
+    items.forEach(
+        itemRef -> {
+          doCompareAndPut(
+              project,
+              itemRef.get(REF_DB_PRIMARY_KEY),
+              itemRef.get(REF_DB_VALUE_KEY),
+              ObjectId.zeroId().getName());
+        });
   }
 
   @SuppressWarnings("unchecked")
@@ -248,5 +265,24 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
 
   private boolean exists(GetItemResult result) {
     return result.getItem() != null && !result.getItem().isEmpty();
+  }
+
+  private Stream<Map<String, String>> scanItems(String prefix) {
+    List<String> attributesToGet = List.of(REF_DB_PRIMARY_KEY, REF_DB_VALUE_KEY);
+    Condition condition = new Condition();
+    condition.setComparisonOperator(ComparisonOperator.BEGINS_WITH);
+    condition.setAttributeValueList(List.of(new AttributeValue(prefix)));
+
+    ScanResult response =
+        dynamoDBClient.scan(
+            configuration.getRefsDbTableName(), attributesToGet, Map.of("refPath", condition));
+
+    return response.getItems().stream().map(DynamoDBRefDatabase::getAttributeValue);
+  }
+
+  private static Map<String, String> getAttributeValue(
+      Map<String, AttributeValue> stringAttributeValueMap) {
+    return stringAttributeValueMap.entrySet().stream()
+        .collect(toMap(Map.Entry::getKey, e -> e.getValue().getS()));
   }
 }
