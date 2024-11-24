@@ -21,9 +21,13 @@ import com.amazonaws.services.dynamodbv2.LockItem;
 import com.amazonaws.services.dynamodbv2.model.AttributeAction;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.dynamodbv2.model.GetItemResult;
 import com.amazonaws.services.dynamodbv2.model.LockNotGrantedException;
+import com.amazonaws.services.dynamodbv2.model.ScanRequest;
+import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 import com.gerritforge.gerrit.globalrefdb.ExtendedGlobalRefDatabase;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
@@ -33,6 +37,9 @@ import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.entities.Project.NameKey;
 import com.google.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.inject.Singleton;
 import org.eclipse.jgit.lib.ObjectId;
@@ -213,9 +220,15 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
 
   @Override
   public void remove(Project.NameKey project) throws GlobalRefDbSystemError {
-    // TODO: to remove all refs related to project we'd need to be able to query
-    // dynamodb by 'project': perhaps we should have a composite key of:
-    // PK: project, SK: ref
+    List<Map<String, AttributeValue>> items = scanItemsByPrefix("/" + project.get() + "/");
+    items.forEach(
+        itemRef -> {
+          doCompareAndPut(
+              project,
+              itemRef.get(REF_DB_PRIMARY_KEY).getS(),
+              itemRef.get(REF_DB_VALUE_KEY).getS(),
+              ObjectId.zeroId().getName());
+        });
   }
 
   @SuppressWarnings("unchecked")
@@ -240,6 +253,8 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
   }
 
   private GetItemResult getPathFromDynamoDB(Project.NameKey project, String refName) {
+    // get cache
+    // if exist = pre
     return dynamoDBClient.getItem(
         configuration.getRefsDbTableName(),
         ImmutableMap.of(REF_DB_PRIMARY_KEY, new AttributeValue(pathFor(project, refName))),
@@ -248,5 +263,35 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
 
   private boolean exists(GetItemResult result) {
     return result.getItem() != null && !result.getItem().isEmpty();
+  }
+
+  private List<Map<String, AttributeValue>> scanItemsByPrefix(String prefix) {
+    List<String> attributesToGet = List.of(REF_DB_PRIMARY_KEY, REF_DB_VALUE_KEY);
+    Condition condition = new Condition();
+    condition.setComparisonOperator(ComparisonOperator.BEGINS_WITH);
+    condition.setAttributeValueList(List.of(new AttributeValue(prefix)));
+
+    Map<String, AttributeValue> exclusiveStartKey = null;
+    List<Map<String, AttributeValue>> allItems = new ArrayList<>();
+    do {
+      logger.atSevere().log("********** Scanning page for deletion");
+      ScanRequest scanRequest =
+          new ScanRequest()
+              .withTableName(configuration.getRefsDbTableName())
+              .withAttributesToGet(attributesToGet)
+              .withScanFilter(Map.of("refPath", condition))
+              .withExclusiveStartKey(exclusiveStartKey)
+              // Consume half (RCUs) compared to strong consistency:
+              // - reduce throughput impact
+              // - deleted project is not written to anymore
+              .withConsistentRead(false);
+
+      ScanResult response = dynamoDBClient.scan(scanRequest);
+
+      allItems.addAll(response.getItems());
+      exclusiveStartKey = response.getLastEvaluatedKey();
+    } while (exclusiveStartKey != null);
+
+    return allItems;
   }
 }
