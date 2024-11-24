@@ -244,6 +244,19 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
     assertThat(dynamoDBRefDatabase().compareAndPut(project, refName, null, newRefValue)).isTrue();
   }
 
+  @Test
+  public void removeProjectShouldPutZerosOnRefs() {
+    String refName = "refs/changes/01/01/meta";
+    String oldValue = "533d3ccf8a650fb26380faa732921a2c74924d5c";
+    dynamoDBRefDatabase().put(project, refName, oldValue);
+
+    dynamoDBRefDatabase().remove(project);
+
+    Optional<String> deletedRefValue = dynamoDBRefDatabase().get(project, refName, String.class);
+
+    assertThat(deletedRefValue).hasValue(ObjectId.zeroId().getName());
+  }
+
   private AmazonDynamoDB dynamoDBClient() {
     return plugin.getSysInjector().getInstance(AmazonDynamoDB.class);
   }
