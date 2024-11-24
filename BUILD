@@ -53,13 +53,14 @@ java_library(
         ":aws-dynamodb-refdb__plugin",
         "//plugins/global-refdb",
         "@amazon-regions//jar",
-        "@testcontainers//jar",
+        "@aws-java-sdk-dynamodb//jar",
         "@docker-java-api//jar",
         "@docker-java-transport//jar",
         "@duct-tape//jar",
         "@jna//jar",
         "@testcontainer-localstack//jar",
-        "@aws-java-sdk-dynamodb//jar",
+        "@testcontainers//jar",
+        "@visible-assertions//jar",
     ],
 )
 
