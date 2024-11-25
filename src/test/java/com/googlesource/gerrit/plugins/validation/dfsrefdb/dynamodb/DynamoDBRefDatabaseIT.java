@@ -21,11 +21,15 @@ import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Confi
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.DYNAMODB;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.google.common.cache.LoadingCache;
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.acceptance.WaitUtil;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.entities.Project;
+import com.google.inject.Key;
+import com.google.inject.TypeLiteral;
+import com.google.inject.name.Names;
 import java.time.Duration;
 import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
@@ -251,12 +255,22 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
   }
 
   @Test
-  public void removeProjectShouldIncreaseProjectVersion() {
+  public void removeProjectShouldIncreaseProjectVersionWhenNotCached() {
+    assertThat(dynamoDBRefDatabase().getCurrentVersion(project)).isNull();
+
+    dynamoDBRefDatabase().remove(project);
+    projectVersionCache().invalidate(project.get());
+
+    assertThat(dynamoDBRefDatabase().getCurrentVersion(project)).isEqualTo(1);
+  }
+
+  @Test
+  public void removeProjectShouldKeepCurrentVersionWhenCached() {
     assertThat(dynamoDBRefDatabase().getCurrentVersion(project)).isNull();
 
     dynamoDBRefDatabase().remove(project);
 
-    assertThat(dynamoDBRefDatabase().getCurrentVersion(project)).isEqualTo(1);
+    assertThat(dynamoDBRefDatabase().getCurrentVersion(project)).isNull();
   }
 
   private AmazonDynamoDB dynamoDBClient() {
@@ -265,6 +279,15 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
 
   private DynamoDBRefDatabase dynamoDBRefDatabase() {
     return plugin.getSysInjector().getInstance(DynamoDBRefDatabase.class);
+  }
+
+  private LoadingCache<String, Optional<Integer>> projectVersionCache() {
+    return plugin
+        .getSysInjector()
+        .getInstance(
+            Key.get(
+                new TypeLiteral<LoadingCache<String, Optional<Integer>>>() {},
+                Names.named(ProjectVersionCacheModule.PROJECT_VERSION_CACHE)));
   }
 
   private void createRefInDynamoDB(Project.NameKey project, String refPath, String refValue) {

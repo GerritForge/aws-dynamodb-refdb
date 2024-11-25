@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb;
 
+import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.ProjectVersionCacheModule.PROJECT_VERSION_CACHE;
+
 import com.amazonaws.services.dynamodbv2.AcquireLockOptions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBLockClient;
@@ -28,13 +30,18 @@ import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 import com.gerritforge.gerrit.globalrefdb.ExtendedGlobalRefDatabase;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.entities.Project.NameKey;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.google.inject.name.Named;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 import javax.inject.Singleton;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
@@ -52,15 +59,18 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
   private final AmazonDynamoDBLockClient lockClient;
   private final AmazonDynamoDB dynamoDBClient;
   private final Configuration configuration;
+  private final LoadingCache<String, Optional<Integer>> projectVersionCache;
 
   @Inject
   DynamoDBRefDatabase(
       AmazonDynamoDBLockClient lockClient,
       AmazonDynamoDB dynamoDBClient,
-      Configuration configuration) {
+      Configuration configuration,
+      @Named(PROJECT_VERSION_CACHE) LoadingCache<String, Optional<Integer>> projectVersionCache) {
     this.lockClient = lockClient;
     this.dynamoDBClient = dynamoDBClient;
     this.configuration = configuration;
+    this.projectVersionCache = projectVersionCache;
   }
 
   String pathFor(Project.NameKey projectName, String refName) {
@@ -224,11 +234,12 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
   }
 
   @Nullable
-  public Integer getCurrentVersion(Project.NameKey project) {
-    // TODO: this should be served by a cache
-    String pathForVersion = currentVersionKey(project);
-    GetItemResult item = getItemFromDynamoDB(pathForVersion, false);
-    return exists(item) ? Integer.parseInt(item.getItem().get(REF_DB_VALUE_KEY).getS()) : null;
+  public Integer getCurrentVersion(Project.NameKey project) throws GlobalRefDbSystemError {
+    try {
+      return projectVersionCache.get(project.get()).orElse(null);
+    } catch (ExecutionException e) {
+      throw new GlobalRefDbSystemError("Could not check project version", e);
+    }
   }
 
   @Override
@@ -267,14 +278,37 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
     return getItemFromDynamoDB(refPath, true);
   }
 
-  private GetItemResult getItemFromDynamoDB(String refPath, Boolean consistentRead) {
+  public GetItemResult getItemFromDynamoDB(String refPath, Boolean consistentRead) {
     return dynamoDBClient.getItem(
         configuration.getRefsDbTableName(),
         ImmutableMap.of(REF_DB_PRIMARY_KEY, new AttributeValue(refPath)),
         consistentRead);
   }
 
-  private boolean exists(GetItemResult result) {
+  public boolean exists(GetItemResult result) {
     return result.getItem() != null && !result.getItem().isEmpty();
+  }
+
+  static class ProjectVersionCacheLoader extends CacheLoader<String, Optional<Integer>> {
+
+    private final Provider<DynamoDBRefDatabase> dynamoDBRefDatabaseProvider;
+
+    @Inject
+    public ProjectVersionCacheLoader(Provider<DynamoDBRefDatabase> dynamoDBRefDatabaseProvider) {
+      this.dynamoDBRefDatabaseProvider = dynamoDBRefDatabaseProvider;
+    }
+
+    @Override
+    public Optional<Integer> load(String project) throws Exception {
+      GetItemResult item =
+          dynamoDBRefDatabaseProvider
+              .get()
+              .getItemFromDynamoDB(currentVersionKey(Project.nameKey(project)), false);
+      Integer currentVersion =
+          dynamoDBRefDatabaseProvider.get().exists(item)
+              ? Integer.parseInt(item.getItem().get(REF_DB_VALUE_KEY).getS())
+              : null;
+      return Optional.ofNullable(currentVersion);
+    }
   }
 }
