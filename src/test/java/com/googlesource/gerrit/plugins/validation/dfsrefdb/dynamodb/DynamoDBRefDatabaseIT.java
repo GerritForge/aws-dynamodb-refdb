@@ -244,6 +244,24 @@ public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
     assertThat(dynamoDBRefDatabase().compareAndPut(project, refName, null, newRefValue)).isTrue();
   }
 
+  @Test
+  public void projectVersionShouldBeUsedAsPrefix() {
+    String versionKey = DynamoDBRefDatabase.currentVersionKey(project);
+    dynamoDBRefDatabase().doPut(project, versionKey, "1");
+
+    assertThat(dynamoDBRefDatabase().pathFor(project, "refs/heads/master"))
+        .isEqualTo("|1/" + project + "/refs/heads/master");
+  }
+
+  @Test
+  public void removeProjectShouldIncreaseProjectVersion() {
+    assertThat(dynamoDBRefDatabase().getCurrentVersion(project)).isNull();
+
+    dynamoDBRefDatabase().remove(project);
+
+    assertThat(dynamoDBRefDatabase().getCurrentVersion(project)).isEqualTo(1);
+  }
+
   private AmazonDynamoDB dynamoDBClient() {
     return plugin.getSysInjector().getInstance(AmazonDynamoDB.class);
   }
