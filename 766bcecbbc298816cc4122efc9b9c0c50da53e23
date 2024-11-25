@@ -93,6 +93,30 @@
       },
       "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4012f61a_62697f84",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-25T10:18:56Z",
+      "side": 1,
+      "message": "\u003e I am testing this locally, but we already know it is inefficient regarding latency or RCU consumed.\n\nYes, that needs to be highlighted in the README.md\n\n\u003e Deleting a bunch of refs could potentially scan millions of entries in the table.\n\nSure, that\u0027s exactly why the TODO needs to stay there.\n\n\u003e Perhaps it is acceptable if the number of project deletions is minimum.\n\nThat needs to be highlighted in the README.md. \n\n\u003e I think the proper solution would be to add an additional attribute `projects` with a secondary index for fast query.\n\nSure, but cannot be done on a stable branch and requires the migration of existing tables.\n\n\u003e I am not sure this could be done in a back-compatible way though.\n\nExactly.\n\n\u003e Perhaps it will be a change for master (or for 3.11 since it is not yet out?\n\nOn master, we can also take some brand-new approaches, where maybe we have a DynamoDb table per repository? Or other ideas?\nThat\u0027s not a discussion for this change and this branch though.\n\n\u003e When the `remove(project)` call is received we:\n\u003e - check if the project attribute exists and its populated\n\u003e - if so, we zero those entries\n\u003e - If not, we will fall back to the scan.\n\u003e \n\u003e This does not cope with the fact that only a subset number of refs might have the `project` set, so I am not sure there is a fully compatible way that doesn\u0027t require wiping out the data.\n\nThe above won\u0027t help with the existing data: adding an attribute would require a migration step.",
+      "parentUuid": "49b1bdba_c4b324b5",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 28
+      },
+      "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
