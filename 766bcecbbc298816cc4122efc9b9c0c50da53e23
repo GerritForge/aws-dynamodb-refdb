@@ -22,6 +22,30 @@
       },
       "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8f3041_76e86e5f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-25T09:51:26Z",
+      "side": 1,
+      "message": "I don\u0027t think so: we still need to think about a more efficient way to select all the keys for a project. The method implemented (full table scan) is very inefficient.",
+      "parentUuid": "a4b3448c_0c144174",
+      "range": {
+        "startLine": 221,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 27
+      },
+      "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
