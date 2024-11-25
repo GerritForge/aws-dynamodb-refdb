@@ -74,6 +74,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed6f35d4_8fa06da1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-25T11:12:32Z",
+      "side": 1,
+      "message": "Scan results are limited to 1 MB of data [1], we need to paginate [2] on the results to ensure all data is processed.\n\n[1] https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html\n[2] https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 55
+      },
+      "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9e1f1f_22073af2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-25T11:12:32Z",
+      "side": 1,
+      "message": "```suggestion\n  private List\u003cMap\u003cString, AttributeValue\u003e\u003e scanItemsByPrefix(String prefix) {\n```",
+      "range": {
+        "startLine": 267,
+        "startChar": 44,
+        "endLine": 267,
+        "endChar": 53
+      },
+      "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b1bdba_c4b324b5",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
         "patchSetId": 5
@@ -109,6 +155,30 @@
       "side": 1,
       "message": "\u003e I am testing this locally, but we already know it is inefficient regarding latency or RCU consumed.\n\nYes, that needs to be highlighted in the README.md\n\n\u003e Deleting a bunch of refs could potentially scan millions of entries in the table.\n\nSure, that\u0027s exactly why the TODO needs to stay there.\n\n\u003e Perhaps it is acceptable if the number of project deletions is minimum.\n\nThat needs to be highlighted in the README.md. \n\n\u003e I think the proper solution would be to add an additional attribute `projects` with a secondary index for fast query.\n\nSure, but cannot be done on a stable branch and requires the migration of existing tables.\n\n\u003e I am not sure this could be done in a back-compatible way though.\n\nExactly.\n\n\u003e Perhaps it will be a change for master (or for 3.11 since it is not yet out?\n\nOn master, we can also take some brand-new approaches, where maybe we have a DynamoDb table per repository? Or other ideas?\nThat\u0027s not a discussion for this change and this branch though.\n\n\u003e When the `remove(project)` call is received we:\n\u003e - check if the project attribute exists and its populated\n\u003e - if so, we zero those entries\n\u003e - If not, we will fall back to the scan.\n\u003e \n\u003e This does not cope with the fact that only a subset number of refs might have the `project` set, so I am not sure there is a fully compatible way that doesn\u0027t require wiping out the data.\n\nThe above won\u0027t help with the existing data: adding an attribute would require a migration step.",
       "parentUuid": "49b1bdba_c4b324b5",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 28
+      },
+      "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3337b33_a2ca56a9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-25T11:12:32Z",
+      "side": 1,
+      "message": "\u003e \u003e I am testing this locally, but we already know it is inefficient regarding latency or RCU consumed.\n\u003e \n\u003e Yes, that needs to be highlighted in the README.md\n\n+1\n\n\u003e \n\u003e \u003e Deleting a bunch of refs could potentially scan millions of entries in the table.\n\u003e \n\u003e Sure, that\u0027s exactly why the TODO needs to stay there.\n\nAck\n\u003e \n\u003e \u003e Perhaps it is acceptable if the number of project deletions is minimum.\n\u003e \n\u003e That needs to be highlighted in the README.md. \n\n+1\n\n\u003e \n\u003e \u003e I think the proper solution would be to add an additional attribute `projects` with a secondary index for fast query.\n\u003e \n\u003e Sure, but cannot be done on a stable branch and requires the migration of existing tables.\n\n+1\n\n\u003e \n\u003e \u003e I am not sure this could be done in a back-compatible way though.\n\u003e \n\u003e Exactly.\n\u003e \n\u003e \u003e Perhaps it will be a change for master (or for 3.11 since it is not yet out?\n\u003e \n\u003e On master, we can also take some brand-new approaches, where maybe we have a DynamoDb table per repository? Or other ideas?\n\nhavin a dynamodb table per repo allows each table to have its own provisioned or on-demand capacity settings, but it is a management overhead (consider that there is a default limit of 2500 tables per region [1], can be lifted of course)\n\n[1] https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html#limits-tables\n\n\u003e That\u0027s not a discussion for this change and this branch though.\n\u003e \n\u003e \u003e When the `remove(project)` call is received we:\n\u003e \u003e - check if the project attribute exists and its populated\n\u003e \u003e - if so, we zero those entries\n\u003e \u003e - If not, we will fall back to the scan.\n\u003e \u003e \n\u003e \u003e This does not cope with the fact that only a subset number of refs might have the `project` set, so I am not sure there is a fully compatible way that doesn\u0027t require wiping out the data.\n\u003e \n\u003e The above won\u0027t help with the existing data: adding an attribute would require a migration step.\n\nAck.",
+      "parentUuid": "4012f61a_62697f84",
       "range": {
         "startLine": 274,
         "startChar": 0,
