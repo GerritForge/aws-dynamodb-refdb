@@ -78,7 +78,7 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
   @Override
   public boolean isUpToDate(Project.NameKey project, Ref ref) throws GlobalRefDbLockException {
     try {
-      GetItemResult result = getPathFromDynamoDB(pathFor(project, ref.getName()));
+      GetItemResult result = getItemFromDynamoDB(pathFor(project, ref.getName()));
       if (!exists(result)) {
         return true;
       }
@@ -209,7 +209,7 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
   @Override
   public boolean exists(Project.NameKey project, String refName) {
     try {
-      if (!exists(getPathFromDynamoDB(pathFor(project, refName)))) {
+      if (!exists(getItemFromDynamoDB(pathFor(project, refName)))) {
         logger.atFine().log("ref '%s' does not exist in dynamodb", pathFor(project, refName));
         return false;
       }
@@ -227,7 +227,7 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
   public Integer getCurrentVersion(Project.NameKey project) {
     // TODO: this should be served by a cache
     String pathForVersion = currentVersionKey(project);
-    GetItemResult item = getPathFromDynamoDB(pathForVersion, false);
+    GetItemResult item = getItemFromDynamoDB(pathForVersion, false);
     return exists(item) ? Integer.parseInt(item.getItem().get(REF_DB_VALUE_KEY).getS()) : null;
   }
 
@@ -247,7 +247,7 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
   public <T> Optional<T> get(Project.NameKey project, String refName, Class<T> clazz)
       throws GlobalRefDbSystemError {
     try {
-      GetItemResult item = getPathFromDynamoDB(pathFor(project, refName));
+      GetItemResult item = getItemFromDynamoDB(pathFor(project, refName));
       if (!exists(item)) {
         return Optional.empty();
       }
@@ -263,11 +263,11 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
     }
   }
 
-  private GetItemResult getPathFromDynamoDB(String refPath) {
-    return getPathFromDynamoDB(refPath, true);
+  private GetItemResult getItemFromDynamoDB(String refPath) {
+    return getItemFromDynamoDB(refPath, true);
   }
 
-  private GetItemResult getPathFromDynamoDB(String refPath, Boolean consistentRead) {
+  private GetItemResult getItemFromDynamoDB(String refPath, Boolean consistentRead) {
     return dynamoDBClient.getItem(
         configuration.getRefsDbTableName(),
         ImmutableMap.of(REF_DB_PRIMARY_KEY, new AttributeValue(refPath)),
