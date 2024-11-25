@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8048c6cf_5ee61ca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-25T18:26:28Z",
+      "side": 1,
+      "message": "`refPath`",
+      "revId": "a6ae7d7f0c07a7d20b10381e01de0b0132ab6e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab97363c_22ce05c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-25T18:26:28Z",
+      "side": 1,
+      "message": "`refPath`",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "a6ae7d7f0c07a7d20b10381e01de0b0132ab6e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b343416c_72696974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-25T18:26:28Z",
+      "side": 1,
+      "message": "Can we also explain why we decided to use the `|` prefix?",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "a6ae7d7f0c07a7d20b10381e01de0b0132ab6e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8b94af_01e0e62a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-25T18:26:28Z",
+      "side": 1,
+      "message": "Maybe it would be best to manage this check in the `versionPrefix()` function",
+      "range": {
+        "startLine": 68,
+        "startChar": 19,
+        "endLine": 68,
+        "endChar": 79
+      },
+      "revId": "a6ae7d7f0c07a7d20b10381e01de0b0132ab6e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0546407b_59df3ee8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-25T18:26:28Z",
+      "side": 1,
+      "message": "Unrelated: the method name was misleading. Consider renaming it in a follow-up change.\n\n```suggestion\n  private GetItemResult getItemFromDynamoDB(String refPath) {\n```",
+      "range": {
+        "startLine": 268,
+        "startChar": 24,
+        "endLine": 268,
+        "endChar": 43
+      },
+      "revId": "a6ae7d7f0c07a7d20b10381e01de0b0132ab6e48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
