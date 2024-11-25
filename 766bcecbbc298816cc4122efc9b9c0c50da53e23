@@ -70,6 +70,29 @@
       },
       "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b1bdba_c4b324b5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/DynamoDBRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-25T10:01:58Z",
+      "side": 1,
+      "message": "I am testing this locally, but we already know it is inefficient regarding latency or RCU consumed.\n\nDeleting a bunch of refs could potentially scan millions of entries in the table.\n\nPerhaps it is acceptable if the number of project deletions is minimum.\n\nI think the proper solution would be to add an additional attribute `projects` with a secondary index for fast query.\n\nI am not sure this could be done in a back-compatible way though.\n\nPerhaps it will be a change for master (or for 3.11 since it is not yet out?).\n\nWhen the `remove(project)` call is received we:\n- check if the project attribute exists and its populated\n- if so, we zero those entries\n- If not, we will fall back to the scan.\n\nThis does not cope with the fact that only a subset number of refs might have the `project` set, so I am not sure there is a fully-compatible way that doesn\u0027t require wiping out the data.\n\n@luca.milanesio WDYT?\n\n\n\nWDYT?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 28
+      },
+      "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
