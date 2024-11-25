@@ -39,6 +39,3 @@ associated sha1.
 connect to the DynamoDb. See [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 Default: When not specified credentials are provided via the Default Credentials
 Provider Chain, as explained [here](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html)
-
-
-
