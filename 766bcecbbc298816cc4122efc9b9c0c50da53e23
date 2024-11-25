@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "013a2ba7_5933e37d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-25T11:16:42Z",
+      "side": 1,
+      "message": "Functionally this works.\n\nBefore deletion of project foo: https://imgur.com/eKp85nM\nAfter deletion of project foo: https://imgur.com/tSoX12Y\nAfter re-creation of project foo: https://imgur.com/PmLMC1r",
+      "revId": "766bcecbbc298816cc4122efc9b9c0c50da53e23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4b3448c_0c144174",
