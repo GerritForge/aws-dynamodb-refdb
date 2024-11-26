@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae2bee07_af078117",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/ProjectVersionCacheModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-26T10:28:45Z",
+      "side": 1,
+      "message": "I think it is quite unusual to delete a project and then recreate it after a few seconds. If someone has this requirement they can always lower this value.\n\nI lowered this to 60 seconds, but it should be arguably higher imho.",
+      "parentUuid": "05fe037a_d4de2454",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "050cba046f31ab997c3aa7f0b36822f759d284b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "767776d4_28da4aa0",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-25T21:04:37Z",
       "side": 1,
       "message": "```suggestion\nthe current live version of a project.\n```",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "050cba046f31ab997c3aa7f0b36822f759d284b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5201032f_1e66455c",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-26T10:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767776d4_28da4aa0",
       "range": {
         "startLine": 46,
         "startChar": 12,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-11-25T21:04:37Z",
       "side": 1,
       "message": "We should recommend to have this unlimited, as it is a very small cache and there\u0027s no reason for not keeping it fully in memory.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 27
+      },
+      "revId": "050cba046f31ab997c3aa7f0b36822f759d284b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c982276_44e499ce",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-26T10:28:45Z",
+      "side": 1,
+      "message": "I have removed this from the example and set it unlimited in the cache definition.",
+      "parentUuid": "3bca3fad_40a581a9",
       "range": {
         "startLine": 80,
         "startChar": 0,
