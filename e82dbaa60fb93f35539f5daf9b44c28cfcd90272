@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd748d27_508f1d1d",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-11-26T10:50:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure we want to expose this internal mechanism to the Gerrit admin: this cache is for internal use only and is not supposed to be changed, configured, flushed, or anything else.\n\nWhat would be the purpose for a Gerrit admin to configure this?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
