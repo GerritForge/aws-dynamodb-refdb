@@ -22,6 +22,30 @@
       },
       "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b01ed24_d97680d5",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-11-26T10:53:54Z",
+      "side": 1,
+      "message": "The is what I documented in the readme:\n\n```\nBy tuning these parameters, you can optimize the trade-off between DynamoDB costs and the immediacy of project version updates.\n```\n\nA company that doesn\u0027t allow project deletions might set this to a very high value or even never to expire.\n\nWhy should a company pay the price of an additional read in this case?",
+      "parentUuid": "fd748d27_508f1d1d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
