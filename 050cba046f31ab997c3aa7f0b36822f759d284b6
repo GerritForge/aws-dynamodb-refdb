@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3612504f_1d5183a7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/ProjectVersionCacheModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-12-06T08:38:12Z",
+      "side": 1,
+      "message": "\u003e I think it is quite unusual to delete a project and then recreate it after a few seconds. If someone has this requirement they can always lower this value.\n\u003e \n\u003e I lowered this to 60 seconds, but it should be arguably higher imho.\n\nDo you believe that making 4 calls in 5 minutes would add a high latency or expenditure?\n\nBear in mind that this isn\u0027t a _refresh every 5 minutes_ but just _expire_ the value and it will be reloaded *IF* and *WHEN* the repo is accessed again.",
+      "parentUuid": "ae2bee07_af078117",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "050cba046f31ab997c3aa7f0b36822f759d284b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "767776d4_28da4aa0",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
