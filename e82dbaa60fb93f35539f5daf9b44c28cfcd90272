@@ -70,6 +70,30 @@
       },
       "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff4f6b2_0a1841e7",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-12-06T10:31:15Z",
+      "side": 1,
+      "message": "\u003e Should we just then check if the delete project plugin is not there and just disable this mechanism altogether?\n\nJust because the plugin isn’t currently installed doesn’t mean it was never used. Projects might have been deleted in the past, leaving old versions that still need to be handled.\n\n\u003e \n\u003e From your feedback it looks like more an on/off setting.\n\nThe on/off scenario I mentioned was just an example to highlight flexibility, not a strict proposal. Business needs vary. Some might prioritise cost savings, others immediate updates. Hardcoding a specific, arbitrary TTL risks limiting adaptability.\n\nThis flexibility comes naturally with the caching mechanism, so I think it’s worth leaving it as is.",
+      "parentUuid": "32e1de35_9596a36d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }

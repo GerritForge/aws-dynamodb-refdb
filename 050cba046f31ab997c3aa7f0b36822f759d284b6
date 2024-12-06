@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15e60ae4_cf0fef48",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/ProjectVersionCacheModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-12-06T10:31:15Z",
+      "side": 1,
+      "message": "\u003e \u003e I think it is quite unusual to delete a project and then recreate it after a few seconds. If someone has this requirement they can always lower this value.\n\u003e \u003e \n\u003e \u003e I lowered this to 60 seconds, but it should be arguably higher imho.\n\u003e \n\u003e Do you believe that making 4 calls in 5 minutes would add a high latency or expenditure?\n\nFor a repository accessed with a low frequency, this is not a problem, of course, 4 calls would be negligible.\n\u003e \n\u003e Bear in mind that this isn\u0027t a _refresh every 5 minutes_ but just _expire_ the value and it will be reloaded *IF* and *WHEN* the repo is accessed again.\n\nI am thinking about the case when a critical repository is accessed continuously.\n\nIn 1h (3600s):\n\n- maxAge 1s \u003d\u003e ~3600 extra reads\n- maxAge 5s \u003d\u003e ~720 extra reads\n- maxAge 60s \u003d\u003e ~60 extra reads\n- maxAge 5m \u003d\u003e ~12 extra reads\n\nWe can arbitrarily set the TTL to one of these values, but this is precisely my point: it is arbitrary to decide with one, as it depends on the requirements and on the affordability in terms of dynamodb provisioning.",
+      "parentUuid": "3612504f_1d5183a7",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "050cba046f31ab997c3aa7f0b36822f759d284b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "767776d4_28da4aa0",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
