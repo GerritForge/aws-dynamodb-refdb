@@ -118,6 +118,30 @@
       },
       "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb2ec7f_e4cbfcdf",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-12-10T13:53:50Z",
+      "side": 1,
+      "message": "We do get this feature OOTB by just using Gerrit\u0027s caching mechanism, no? no code to add to get this functionality working.\n\nAre you suggesting we don\u0027t use Gerrit\u0027s caching mechanism at all? or that we simply don\u0027t document it?",
+      "parentUuid": "38fe5c57_764646f3",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }

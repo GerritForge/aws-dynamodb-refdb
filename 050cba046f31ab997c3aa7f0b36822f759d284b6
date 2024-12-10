@@ -120,6 +120,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f923355_a3d5ac1d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/ProjectVersionCacheModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-12-10T13:53:50Z",
+      "side": 1,
+      "message": "Nope, but I still think we don\u0027t have to foresee problems if we allow users to tune the cache 😜\nAnyway, resolving, as this is the same subject being discussed at [1]\n\n[1] https://gerrit-review.googlesource.com/c/plugins/aws-dynamodb-refdb/+/444124/comment/fd748d27_508f1d1d/",
+      "parentUuid": "a5da2e9c_2a1102d8",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "050cba046f31ab997c3aa7f0b36822f759d284b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "767776d4_28da4aa0",
