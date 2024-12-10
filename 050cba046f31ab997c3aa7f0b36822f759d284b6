@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5da2e9c_2a1102d8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/dynamodb/ProjectVersionCacheModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-12-10T09:09:08Z",
+      "side": 1,
+      "message": "\u003e I am thinking about the case when a critical repository is accessed continuously.\n\u003e \n\u003e In 1h (3600s):\n\u003e \n\u003e - maxAge 1s \u003d\u003e ~3600 extra reads\n\u003e - maxAge 5s \u003d\u003e ~720 extra reads\n\u003e - maxAge 60s \u003d\u003e ~60 extra reads\n\nI suggested 60s, which means 60 reads per hour: I do not believe that represents any issue in the table limits or costs.\n\nDo you see foresee any problem?",
+      "parentUuid": "15e60ae4_cf0fef48",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "050cba046f31ab997c3aa7f0b36822f759d284b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "767776d4_28da4aa0",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
