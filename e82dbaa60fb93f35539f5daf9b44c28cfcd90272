@@ -142,6 +142,30 @@
       },
       "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c528fb3_7ffe5561",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-12-19T23:17:45Z",
+      "side": 1,
+      "message": "\u003e We do get this feature OOTB by just using Gerrit\u0027s caching mechanism, no? no code to add to get this functionality working.\n\nThe issue isn\u0027t the code, but rather its reference in the documentation and its OOTB value. I am fine in keeping it as internal mechanism but I would not expose this externally in the documentation. The Gerrit admin should not rely on the fact of having it and tweaking it directly.",
+      "parentUuid": "feb2ec7f_e4cbfcdf",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "e82dbaa60fb93f35539f5daf9b44c28cfcd90272",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
