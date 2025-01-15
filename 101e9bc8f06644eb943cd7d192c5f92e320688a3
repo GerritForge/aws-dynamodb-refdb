@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93c6bf4_44cab093",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2025-01-15T14:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef54bcaf_8c1fbfdd",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "101e9bc8f06644eb943cd7d192c5f92e320688a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c1134d3_805dd16e",
@@ -47,6 +71,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "070410f8_334b90fa",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2025-01-15T14:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c1134d3_805dd16e",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "101e9bc8f06644eb943cd7d192c5f92e320688a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8871cf2e_19fd0553",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-01-15T13:42:28Z",
       "side": 1,
       "message": "I believe this is an internal implementation detail that can be omitted and the statement at L45-46 are enough.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 61
+      },
+      "revId": "101e9bc8f06644eb943cd7d192c5f92e320688a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37d50f6_c0244c1b",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2025-01-15T14:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8871cf2e_19fd0553",
       "range": {
         "startLine": 59,
         "startChar": 0,
