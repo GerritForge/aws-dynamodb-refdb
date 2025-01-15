@@ -9,12 +9,12 @@
       "updated": "2025-01-15T14:44:52Z"
     },
     "gerritforge:plugins-aws-dynamodb-refdb-code-style": {
-      "state": "RUNNING",
-      "url": "https://gerrit-ci.gerritforge.com/job/plugin-aws-dynamodb-refdb-verifier/job/18%252F447618%252F3/3/console",
+      "state": "SUCCESSFUL",
+      "url": "https://gerrit-ci.gerritforge.com/job/plugin-aws-dynamodb-refdb-verifier/job/18%252F447618%252F3/2/console",
       "started": "2025-01-15T14:50:59Z",
-      "finished": "2025-01-15T14:33:09Z",
+      "finished": "2025-01-15T14:51:19Z",
       "created": "2025-01-15T14:32:35Z",
-      "updated": "2025-01-15T14:50:59Z"
+      "updated": "2025-01-15T14:51:19Z"
     }
   }
 }
