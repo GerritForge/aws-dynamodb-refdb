@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef54bcaf_8c1fbfdd",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2025-01-15T13:42:28Z",
+      "side": 1,
+      "message": "This is a detailed description of the internal implementation, though I\u0027m not sure how is this relevant to the Gerrit admin. Also, it risk to become stale as the implementation evolves over time.\n\nThe remark at L45-L46 is enough IMHO to understand that there is a cache of the current live version of a project.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "101e9bc8f06644eb943cd7d192c5f92e320688a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1134d3_805dd16e",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2025-01-15T13:42:28Z",
+      "side": 1,
+      "message": "I believe here the catch is to minimise the number of DynamoDb operations that are unlikely to provide a different result, avoiding excessive charges for reading continuously unchanged data.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "101e9bc8f06644eb943cd7d192c5f92e320688a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8871cf2e_19fd0553",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2025-01-15T13:42:28Z",
+      "side": 1,
+      "message": "I believe this is an internal implementation detail that can be omitted and the statement at L45-46 are enough.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 61
+      },
+      "revId": "101e9bc8f06644eb943cd7d192c5f92e320688a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c570c6_1de8195f",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2025-01-15T13:42:28Z",
+      "side": 1,
+      "message": "This is *very* important and should be rendered as a NOTE.\n\n\n\n```suggestion\n\u003e **IMPORTANT NOTE** When a project is deleted, it cannot be recreated with\n\u003e the same name for the subsequent 60 seconds, because of the of the _live version_ caching mechanism described above.\n\u003e Any attempt to recreate the same project with the same name *before 60 seconds*\n\u003e will result in a failure.\n```",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 78
+      },
+      "revId": "101e9bc8f06644eb943cd7d192c5f92e320688a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
