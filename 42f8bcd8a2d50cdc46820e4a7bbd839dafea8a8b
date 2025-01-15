@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0473c5ff_a802f03f",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2025-01-15T14:28:04Z",
+      "side": 1,
+      "message": "nit: wrap long line.",
+      "range": {
+        "startLine": 55,
+        "startChar": 91,
+        "endLine": 55,
+        "endChar": 118
+      },
+      "revId": "42f8bcd8a2d50cdc46820e4a7bbd839dafea8a8b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
