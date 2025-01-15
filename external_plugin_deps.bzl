@@ -97,6 +97,12 @@ def external_plugin_deps():
     )
 
     maven_jar(
+        name = "visible-assertions",
+        artifact = "org.rnorth.visible-assertions:visible-assertions:2.1.2",
+        sha1 = "20d31a578030ec8e941888537267d3123c2ad1c1",
+    )
+
+    maven_jar(
         name = "docker-java-api",
         artifact = "com.github.docker-java:docker-java-api:" + DOCKER_JAVA_VERS,
         sha1 = "4ac22a72d546a9f3523cd4b5fabffa77c4a6ec7c",
