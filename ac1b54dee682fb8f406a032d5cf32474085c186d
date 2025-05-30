@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38bf446_aacc3081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2025-05-30T09:32:11Z",
+      "side": 1,
+      "message": "All tests pass locally:\n\n```\nTarget //plugins/aws-dynamodb-refdb:aws-dynamodb-refdb_tests up-to-date:\n  bazel-bin/plugins/aws-dynamodb-refdb/aws-dynamodb-refdb_tests.jar\n  bazel-bin/plugins/aws-dynamodb-refdb/aws-dynamodb-refdb_tests\nINFO: Elapsed time: 197.700s, Critical Path: 197.61s\nINFO: 4 processes: 1 internal, 2 linux-sandbox, 1 worker.\nINFO: Build completed successfully, 4 total actions\n//plugins/aws-dynamodb-refdb:aws-dynamodb-refdb_tests                    PASSED in 196.9s\n\nINFO: Build completed successfully, 4 total actions```",
+      "revId": "ac1b54dee682fb8f406a032d5cf32474085c186d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
