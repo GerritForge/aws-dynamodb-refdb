@@ -33,6 +33,7 @@ class Module extends LifecycleModule {
     DynamicItem.bind(binder(), GlobalRefDatabase.class)
         .to(DynamoDBRefDatabase.class)
         .in(Scopes.SINGLETON);
+    install(new ProjectVersionCacheModule());
     bind(AmazonDynamoDB.class).toProvider(AmazonDynamoDBProvider.class).in(SINGLETON);
     bind(AmazonDynamoDBLockClient.class).toProvider(DynamoDBLockClientProvider.class).in(SINGLETON);
     listener().to(DynamoDBLifeCycleManager.class);
