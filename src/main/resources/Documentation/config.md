@@ -40,5 +40,19 @@ connect to the DynamoDb. See [Configuration and credential file settings](https:
 Default: When not specified credentials are provided via the Default Credentials
 Provider Chain, as explained [here](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html)
 
+### Project Deletion
 
+This plugin introduces a caching mechanism to reduce the number of requests to
+DynamoDB by storing the current live version of a project.
+
+Checking the current live version of a project directly from DynamoDB can be
+costly. To minimise the number of DynamoDb operations that are unlikely to
+provide a different result, avoiding excessive charges for reading continuously
+unchanged data, the plugin employs a cache with a time-to-live (TTL) of `60
+seconds`.
+
+> **IMPORTANT NOTE** When a project is deleted, it cannot be recreated with the
+> same name for the subsequent 60 seconds, because of the of the _live version_
+> caching mechanism described above.  Any attempt to recreate the same project
+> with the same name *before 60 seconds* will result in a failure.
 
