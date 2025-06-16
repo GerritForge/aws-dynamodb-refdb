@@ -1,11 +1,12 @@
 {
   "checks": {
     "gerritforge:plugins-aws-dynamodb-refdb-build-test": {
-      "state": "RUNNING",
+      "state": "SUCCESSFUL",
       "url": "https://gerrit-ci.gerritforge.com/job/plugin-aws-dynamodb-refdb-verifier/job/23%252F481023%252F2/1/console",
       "started": "2025-06-16T06:54:30Z",
+      "finished": "2025-06-16T07:00:39Z",
       "created": "2025-06-16T06:54:30Z",
-      "updated": "2025-06-16T06:54:30Z"
+      "updated": "2025-06-16T07:00:40Z"
     },
     "gerritforge:plugins-aws-dynamodb-refdb-code-style": {
       "state": "SUCCESSFUL",
