@@ -3,7 +3,7 @@
     "gerritforge:plugins-aws-dynamodb-refdb-build-test": {
       "state": "NOT_STARTED",
       "created": "2021-10-04T13:57:49Z",
-      "updated": "2025-06-23T12:40:40Z"
+      "updated": "2025-06-23T12:41:28Z"
     },
     "gerritforge:plugins-aws-dynamodb-refdb-code-style": {
       "state": "SUCCESSFUL",
