@@ -148,6 +148,9 @@ public class DynamoDBRefDatabase implements ExtendedGlobalRefDatabase {
                     "attribute_not_exists(%s) OR %s = :old_value",
                     REF_DB_PRIMARY_KEY, REF_DB_VALUE_KEY));
     try {
+      if (refPath.contains("starred-changes")) {
+        throw new ConditionalCheckFailedException("TONY - forcing conditional check failure");
+      }
       dynamoDBClient.updateItem(updateItemRequest);
       logger.atFine().log(
           "Updated path for project %s. Current: %s New: %s",
