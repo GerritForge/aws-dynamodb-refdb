@@ -10,7 +10,7 @@ match the aws-dynamodb-refdb plugin one.
 ```shell script
 git clone --recursive https://gerrit.googlesource.com/gerrit
 cd gerrit
-git clone "https://gerrit.googlesource.com/plugins/aws-dynamodb-refdb" plugins/aws-dynamodb-refdb
+git clone "https://review.gerrithub.io/GerritForge/aws-dynamodb-refdb" plugins/aws-dynamodb-refdb
 ln -sf plugins/aws-dynamodb-refdb/external_plugin_deps.bzl plugins/.
 bazelisk build plugins/aws-dynamodb-refdb
 ```

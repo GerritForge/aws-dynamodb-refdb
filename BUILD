@@ -13,7 +13,7 @@ gerrit_plugin(
         "Gerrit-PluginName: aws-dynamodb-refdb",
         "Gerrit-Module: com.gerritforge.gerrit.plugins.validation.dfsrefdb.dynamodb.Module",
         "Implementation-Title: AWS DynamoDB shared ref-database implementation",
-        "Implementation-URL: https://gerrit-review.googlesource.com/#/admin/projects/plugins/aws-dynamodb-refdb",
+        "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/aws-dynamodb-refdb",
     ],
     resources = glob(["src/main/resources/**/*"]),
     deps = [
