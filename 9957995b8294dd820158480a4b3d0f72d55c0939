@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f994d56d_857d2177",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-11-09T11:34:07Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "b5885599_69772c68",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 111
+      },
+      "revId": "9957995b8294dd820158480a4b3d0f72d55c0939",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e866c1b6_55fb70fe",
@@ -47,6 +71,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a412e66e_4016da04",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-11-09T11:34:07Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "e866c1b6_55fb70fe",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 96
+      },
+      "revId": "9957995b8294dd820158480a4b3d0f72d55c0939",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4740fab8_30a30a0a",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-09T11:33:39Z",
       "side": 1,
       "message": "This should point to GitHub.\n\n\n\n```suggestion\ngit clone \"https://github.com/GerritForge/aws-dynamodb-refdb\" plugins/aws-dynamodb-refdb\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "9957995b8294dd820158480a4b3d0f72d55c0939",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e5ccd22_40f59bff",
+        "filename": "src/main/resources/Documentation/Build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-11-09T11:34:07Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "4740fab8_30a30a0a",
       "range": {
         "startLine": 13,
         "startChar": 11,
