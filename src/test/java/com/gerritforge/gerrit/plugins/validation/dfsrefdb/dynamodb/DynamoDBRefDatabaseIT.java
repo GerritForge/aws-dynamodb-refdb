@@ -1,10 +1,7 @@
-// Copyright (C) 2021 The Android Open Source Project
+// Copyright (C) 2025 GerritForge, Inc.
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the BSL 1.1 (the "License");
 // you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,11 +9,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb;
+package com.gerritforge.gerrit.plugins.validation.dfsrefdb.dynamodb;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_LOCKS_TABLE_NAME;
-import static com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_REFS_DB_TABLE_NAME;
+import static com.gerritforge.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_LOCKS_TABLE_NAME;
+import static com.gerritforge.gerrit.plugins.validation.dfsrefdb.dynamodb.Configuration.DEFAULT_REFS_DB_TABLE_NAME;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.DYNAMODB;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -42,7 +39,7 @@ import org.testcontainers.utility.DockerImageName;
 
 @TestPlugin(
     name = "aws-dynamodb-refdb",
-    sysModule = "com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Module")
+    sysModule = "com.gerritforge.gerrit.plugins.validation.dfsrefdb.dynamodb.Module")
 public class DynamoDBRefDatabaseIT extends LightweightPluginDaemonTest {
   private static final Duration DYNAMODB_TABLE_CREATION_TIMEOUT = Duration.ofSeconds(10);
 
