@@ -1,10 +1,9 @@
-load("//tools/bzl:junit.bzl", "junit_tests")
 load(
-    "//tools/bzl:plugin.bzl",
-    "PLUGIN_DEPS",
-    "PLUGIN_TEST_DEPS",
+    "@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl",
     "gerrit_plugin",
+    "gerrit_plugin_tests",
 )
+load("@rules_java//java:defs.bzl", "java_library")
 
 gerrit_plugin(
     name = "aws-dynamodb-refdb",
@@ -18,49 +17,25 @@ gerrit_plugin(
     resources = glob(["src/main/resources/**/*"]),
     deps = [
         ":global-refdb-neverlink",
-        "@amazon-aws-core//jar",
-        "@amazon-dynamodb//jar",
-        "@amazon-regions//jar",
-        "@amazon-sdk-core//jar",
-        "@amazon-utils//jar",
-        "@aws-java-sdk-core//jar",
-        "@aws-java-sdk-dynamodb//jar",
-        "@dynamodb-lock-client//jar",
-        "@jackson-annotations//jar",
-        "@jackson-core//jar",
-        "@jackson-databind//jar",
-        "@jackson-dataformat-cbor//jar",
-        "@joda-time//jar",
+        "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_core",
+        "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_dynamodb",
+        "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_dynamodb_lock_client",
+        "@aws_dynamodb_refdb_plugin_deps//:software_amazon_awssdk_regions",
     ],
 )
 
-junit_tests(
+gerrit_plugin_tests(
     name = "aws-dynamodb-refdb_tests",
     timeout = "long",
     srcs = glob(["src/test/java/**/*.java"]),
-    resources = glob(["src/test/resources/**/*"]),
+    plugin = "aws-dynamodb-refdb",
     tags = ["aws-dynamodb-refdb"],
     deps = [
-        ":aws-dynamodb-refdb__plugin_test_deps",
-    ],
-)
-
-java_library(
-    name = "aws-dynamodb-refdb__plugin_test_deps",
-    testonly = 1,
-    visibility = ["//visibility:public"],
-    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":aws-dynamodb-refdb__plugin",
         "//plugins/global-refdb",
-        "@amazon-regions//jar",
-        "@aws-java-sdk-dynamodb//jar",
-        "@docker-java-api//jar",
-        "@docker-java-transport//jar",
-        "@duct-tape//jar",
-        "@jna//jar",
-        "@testcontainer-localstack//jar",
-        "@testcontainers//jar",
-        "@visible-assertions//jar",
+        "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_dynamodb",
+        "@aws_dynamodb_refdb_plugin_deps//:org_testcontainers_localstack",
+        "@aws_dynamodb_refdb_plugin_deps//:org_testcontainers_testcontainers",
+        "@aws_dynamodb_refdb_plugin_deps//:software_amazon_awssdk_regions",
     ],
 )
 
