@@ -1,0 +1,12 @@
+# Module fragment for wiring this plugin's Bazel module into the Gerrit
+# in-tree build when using Bzlmod.
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+
+bazel_dep(name = "gerrit-aws-dynamodb-refdb")
+local_path_override(
+    module_name = "gerrit-aws-dynamodb-refdb",
+    path = "plugins/aws-dynamodb-refdb",
+)
+
+use_repo(maven, "aws_dynamodb_refdb_plugin_deps")
