@@ -1,71 +1,48 @@
-load("//tools/bzl:junit.bzl", "junit_tests")
 load(
-    "//tools/bzl:plugin.bzl",
-    "PLUGIN_DEPS",
-    "PLUGIN_TEST_DEPS",
+    "@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl",
     "gerrit_plugin",
+    "gerrit_plugin_tests",
 )
+load("@rules_java//java:defs.bzl", "java_library")
+
+PLUGIN = "aws-dynamodb-refdb"
+
+EXT_DEPS = [
+    "com.amazonaws:aws-java-sdk-core",
+    "com.amazonaws:aws-java-sdk-dynamodb",
+    "com.amazonaws:dynamodb-lock-client",
+    "software.amazon.awssdk:regions",
+]
+
+TEST_EXT_DEPS = EXT_DEPS + [
+    "org.testcontainers:localstack",
+    "org.testcontainers:testcontainers",
+]
 
 gerrit_plugin(
-    name = "aws-dynamodb-refdb",
     srcs = glob(["src/main/java/**/*.java"]),
+    ext_deps = EXT_DEPS,
     manifest_entries = [
-        "Gerrit-PluginName: aws-dynamodb-refdb",
+        "Gerrit-PluginName: " + PLUGIN,
         "Gerrit-Module: com.gerritforge.gerrit.plugins.validation.dfsrefdb.dynamodb.Module",
         "Implementation-Title: AWS DynamoDB shared ref-database implementation",
         "Implementation-URL: https://github.com/GerritForge/aws-dynamodb-refdb",
     ],
+    plugin = PLUGIN,
     resources = glob(["src/main/resources/**/*"]),
-    deps = [
-        ":global-refdb-neverlink",
-        "@amazon-aws-core//jar",
-        "@amazon-dynamodb//jar",
-        "@amazon-regions//jar",
-        "@amazon-sdk-core//jar",
-        "@amazon-utils//jar",
-        "@aws-java-sdk-core//jar",
-        "@aws-java-sdk-dynamodb//jar",
-        "@dynamodb-lock-client//jar",
-        "@jackson-annotations//jar",
-        "@jackson-core//jar",
-        "@jackson-databind//jar",
-        "@jackson-dataformat-cbor//jar",
-        "@joda-time//jar",
-    ],
+    deps = [":global-refdb-neverlink"],
 )
 
-junit_tests(
-    name = "aws-dynamodb-refdb_tests",
+gerrit_plugin_tests(
     timeout = "long",
     srcs = glob(["src/test/java/**/*.java"]),
-    resources = glob(["src/test/resources/**/*"]),
-    tags = ["aws-dynamodb-refdb"],
-    deps = [
-        ":aws-dynamodb-refdb__plugin_test_deps",
-    ],
-)
-
-java_library(
-    name = "aws-dynamodb-refdb__plugin_test_deps",
-    testonly = 1,
-    visibility = ["//visibility:public"],
-    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":aws-dynamodb-refdb__plugin",
-        "//plugins/global-refdb",
-        "@amazon-regions//jar",
-        "@aws-java-sdk-dynamodb//jar",
-        "@docker-java-api//jar",
-        "@docker-java-transport//jar",
-        "@duct-tape//jar",
-        "@jna//jar",
-        "@testcontainer-localstack//jar",
-        "@testcontainers//jar",
-        "@visible-assertions//jar",
-    ],
+    ext_deps = TEST_EXT_DEPS,
+    plugin = PLUGIN,
+    deps = ["//plugins/global-refdb"],
 )
 
 java_library(
     name = "global-refdb-neverlink",
-    neverlink = 1,
+    neverlink = True,
     exports = ["//plugins/global-refdb"],
 )
