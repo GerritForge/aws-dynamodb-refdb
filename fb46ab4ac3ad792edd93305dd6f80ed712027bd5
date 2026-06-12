@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9250c909_00216e7a",
+        "filename": "MODULE.bazel",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T11:39:21Z",
+      "side": 1,
+      "message": "Can you use the same version as below 1.15.3: [1]? Would it worth to define a constant version for that to DRY?\n\n[1] https://repo1.maven.org/maven2/org/testcontainers/localstack/1.15.3/localstack-1.15.3.pom",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "fb46ab4ac3ad792edd93305dd6f80ed712027bd5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
