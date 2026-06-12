@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da42b7b5_f3012dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "@ponch78@gmail.com I addressed all comments, could you please re-check?",
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc099743_1efed415",
@@ -14,6 +31,30 @@
       "writtenOn": "2026-06-12T05:07:03Z",
       "side": 1,
       "message": "Not needed only plugin is provided.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "543c538e_e71c6665",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc099743_1efed415",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -47,6 +88,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e43bc05_774f7148",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb9e0ca_9f6d0ad5",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 75
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b75f778_65ab6b71",
@@ -60,6 +125,30 @@
       "writtenOn": "2026-06-12T05:07:03Z",
       "side": 1,
       "message": "Nit: not needed, because plugin is provided.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8601dbc_7118b098",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b75f778_65ab6b71",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -93,6 +182,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9613207_475d2f4f",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f9fc31_dda69195",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a4b498c_2a6ac9d6",
@@ -106,6 +219,30 @@
       "writtenOn": "2026-06-12T05:07:03Z",
       "side": 1,
       "message": "Sane as the above. Artifact form is much nicer, avoiding to repeat \"@aws_dynamodb_refdb_plugin_deps\". The list itself should be also defined only once.",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5a33e7_8b12ab96",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4b498c_2a6ac9d6",
       "range": {
         "startLine": 35,
         "startChar": 8,
@@ -139,6 +276,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ea3dde_f3a2a2da",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d02127_feaee89c",
+      "range": {
+        "startLine": 4,
+        "startChar": 50,
+        "endLine": 4,
+        "endChar": 54
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "642307ba_94d06bb9",
@@ -152,6 +313,30 @@
       "writtenOn": "2026-06-12T05:07:03Z",
       "side": 1,
       "message": "This list could be trimmed to the top level dependencies only, and lt the rest be pulled in transitively.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8d8ea2_2fa293a4",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642307ba_94d06bb9",
       "range": {
         "startLine": 9,
         "startChar": 4,
@@ -185,6 +370,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a377c6_cbe81b82",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f309ec1b_0e8c9656",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 86
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b3b2a67_910c2fa0",
@@ -198,6 +407,24 @@
       "writtenOn": "2026-06-12T05:07:03Z",
       "side": 1,
       "message": "You are missing exclusion:\n\n```python\n    excluded_artifacts \u003d [\n        \"commons-codec:commons-codec\",\n        \"junit:junit\",\n        \"org.apache.httpcomponents:httpclient\",\n        \"org.apache.httpcomponents:httpcore\",\n        \"org.slf4j:slf4j-api\",\n    ],\n```",
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1816331b_08124908",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b3b2a67_910c2fa0",
       "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -225,6 +452,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8eb0803_4fbe86a6",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa37f45e_917ce686",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34cfc20e_d977eb2b",
@@ -242,6 +493,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41293f30_53b19de8",
+        "filename": "aws_dynamodb_refdb_plugin_deps.lock.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34cfc20e_d977eb2b",
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d07f1e27_e4b2b621",
@@ -255,6 +524,30 @@
       "writtenOn": "2026-06-12T05:07:03Z",
       "side": 1,
       "message": "aws-dynamodb-refdb_plugin_deps",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1362bdc_83232182",
+        "filename": "external_plugin_deps.MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:09:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07f1e27_e4b2b621",
       "range": {
         "startLine": 9,
         "startChar": 17,
