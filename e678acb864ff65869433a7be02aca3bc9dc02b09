@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc099743_1efed415",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "Not needed only plugin is provided.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb9e0ca_9f6d0ad5",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "We added syntactic sugar to specify external dependencies in artefact form rather than Bazel label. To get those artefact resolved automagically, new plugin attributes must be used (to deduce the external repository).\n\nAnother nice feature are allowlist and overlap tests (to prevent some transitive dependencies from leaking into plugin final artefact that already shipped in gerrit.war), that you also have not got generated automagically, because ext_deps are not passed to gerrit_plugin.\n\nWithout those allowlist test you would have missed that 5 artefacts leaking into plugin shaded JAR, that already included in gerrit.war:\n\n* commons-codec:commons-codec\n* junit:junit\n* org.apache.httpcomponents:httpclient\n* org.apache.httpcomponents:httpcore\n* org.slf4j:slf4j-api\n\nAfter adding plugin and ext_deps the allowlist_test and overlap_test are added automagically:\n\n```\n  $ bazelisk test plugins/\n[...]\n//plugins/aws-dynamodb-refdb:aws-dynamodb-refdb_dependency_allowlist_test (cached) PASSED in 0.2s\n//plugins/aws-dynamodb-refdb:aws-dynamodb-refdb_dependency_overlap_test (cached) PASSED in 0.2s\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 75
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b75f778_65ab6b71",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "Nit: not needed, because plugin is provided.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f9fc31_dda69195",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "Nit: Not needed, because plugin is provided.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4b498c_2a6ac9d6",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "Sane as the above. Artifact form is much nicer, avoiding to repeat \"@aws_dynamodb_refdb_plugin_deps\". The list itself should be also defined only once.",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d02127_feaee89c",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "7.0 should be used.",
+      "range": {
+        "startLine": 4,
+        "startChar": 50,
+        "endLine": 4,
+        "endChar": 54
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642307ba_94d06bb9",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "This list could be trimmed to the top level dependencies only, and lt the rest be pulled in transitively.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f309ec1b_0e8c9656",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "We repin from plugin directory, this should be //:aws-dynamodb-refdb_plugin_deps.lock.json",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 86
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3b2a67_910c2fa0",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "You are missing exclusion:\n\n```python\n    excluded_artifacts \u003d [\n        \"commons-codec:commons-codec\",\n        \"junit:junit\",\n        \"org.apache.httpcomponents:httpclient\",\n        \"org.apache.httpcomponents:httpcore\",\n        \"org.slf4j:slf4j-api\",\n    ],\n```",
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa37f45e_917ce686",
+        "filename": "MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "This is standardised to get external dependencies for you to be resolved automagically in gerrit_plugin and gerrit_plugin_tests macro and should bar \u003cpluginname\u003e_plugin_deps, in this case: aws-dynamodb-refdb_plugin_deps.",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34cfc20e_d977eb2b",
+        "filename": "aws_dynamodb_refdb_plugin_deps.lock.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "Should be named: aws-dynamodb-refdb_plugin_deps.lock.json",
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07f1e27_e4b2b621",
+        "filename": "external_plugin_deps.MODULE.bazel",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-06-12T05:07:03Z",
+      "side": 1,
+      "message": "aws-dynamodb-refdb_plugin_deps",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "e678acb864ff65869433a7be02aca3bc9dc02b09",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
