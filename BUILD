@@ -11,13 +11,15 @@ gerrit_plugin(
     srcs = glob(["src/main/java/**/*.java"]),
     manifest_entries = [
         "Gerrit-PluginName: aws-dynamodb-refdb",
-        "Gerrit-Module: com.gerritforge.gerrit.plugins.validation.dfsrefdb.dynamodb.Module",
+        "Gerrit-Module: com.googlesource.gerrit.plugins.validation.dfsrefdb.dynamodb.Module",
+        "Gerrit-HttpModule: com.gerritforge.gerrit.plugins.bsl.HttpModule",
         "Implementation-Title: AWS DynamoDB shared ref-database implementation",
         "Implementation-URL: https://github.com/GerritForge/aws-dynamodb-refdb",
     ],
     resources = glob(["src/main/resources/**/*"]),
     deps = [
         ":global-refdb-neverlink",
+        "//plugins/gerrit-bsl-license",
         "@amazon-aws-core//jar",
         "@amazon-dynamodb//jar",
         "@amazon-regions//jar",
