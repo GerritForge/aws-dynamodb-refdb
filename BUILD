@@ -19,6 +19,7 @@ gerrit_plugin(
         ":global-refdb-neverlink",
         "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_core",
         "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_dynamodb",
+        "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_sts",
         "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_dynamodb_lock_client",
         "@aws_dynamodb_refdb_plugin_deps//:software_amazon_awssdk_regions",
     ],
