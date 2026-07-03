@@ -25,11 +25,13 @@ gerrit_plugin(
         "@amazon-utils//jar",
         "@aws-java-sdk-core//jar",
         "@aws-java-sdk-dynamodb//jar",
+        "@aws-java-sdk-sts//jar",
         "@dynamodb-lock-client//jar",
         "@jackson-annotations//jar",
         "@jackson-core//jar",
         "@jackson-databind//jar",
         "@jackson-dataformat-cbor//jar",
+        "@jmespath-java//jar",
         "@joda-time//jar",
     ],
 )

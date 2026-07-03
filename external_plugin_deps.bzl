@@ -55,6 +55,18 @@ def external_plugin_deps():
     )
 
     maven_jar(
+        name = "aws-java-sdk-sts",
+        artifact = "com.amazonaws:aws-java-sdk-sts:1.11.960",
+        sha1 = "15751e23f8589362fb02c51b70cbd5ffdab47aff",
+    )
+
+    maven_jar(
+        name = "jmespath-java",
+        artifact = "com.amazonaws:jmespath-java:1.11.960",
+        sha1 = "f4586f31c330893299d96c51ec31dc0063a57c99",
+    )
+
+    maven_jar(
         name = "jackson-databind",
         artifact = "com.fasterxml.jackson.core:jackson-databind:" + JACKSON_VER,
         sha1 = "76e9152e93d4cf052f93a64596f633ba5b1c8ed9",
