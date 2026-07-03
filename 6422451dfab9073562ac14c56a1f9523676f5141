@@ -16,6 +16,24 @@
       "message": "```suggestion\npluginPipeline(extraModules: [\u0027global-refdb\u0027],\n               extraGhRepos: [\u0027gerrit-bsl-license\u0027])\n```",
       "revId": "6422451dfab9073562ac14c56a1f9523676f5141",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a0ca9f_d331f119",
+        "filename": "Jenkinsfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-03T23:55:43Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "3bfbdd35_74fd0270",
+      "revId": "6422451dfab9073562ac14c56a1f9523676f5141",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
