@@ -9,6 +9,7 @@ maven.install(
     artifacts = [
         "com.amazonaws:aws-java-sdk-core:1.11.960",
         "com.amazonaws:aws-java-sdk-dynamodb:1.11.1006",
+        "com.amazonaws:aws-java-sdk-sts:1.11.960",
         "com.amazonaws:dynamodb-lock-client:1.1.0",
         "org.testcontainers:localstack:1.15.2",
         "org.testcontainers:testcontainers:1.15.3",
