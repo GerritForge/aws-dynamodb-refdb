@@ -3,6 +3,7 @@
   "__INPUT_ARTIFACTS_HASH": {
     "com.amazonaws:aws-java-sdk-core": 951485693,
     "com.amazonaws:aws-java-sdk-dynamodb": -1966991224,
+    "com.amazonaws:aws-java-sdk-sts": 513910192,
     "com.amazonaws:dynamodb-lock-client": 1318407280,
     "org.testcontainers:localstack": -1620430568,
     "org.testcontainers:testcontainers": 1258902720,
@@ -18,6 +19,8 @@
     "com.amazonaws:aws-java-sdk-kms:jar:sources": 1483178989,
     "com.amazonaws:aws-java-sdk-s3": -54946261,
     "com.amazonaws:aws-java-sdk-s3:jar:sources": -606118899,
+    "com.amazonaws:aws-java-sdk-sts": -359371554,
+    "com.amazonaws:aws-java-sdk-sts:jar:sources": -2123097067,
     "com.amazonaws:dynamodb-lock-client": 2020974217,
     "com.amazonaws:dynamodb-lock-client:jar:sources": 1969307020,
     "com.amazonaws:jmespath-java": 289886913,
@@ -111,6 +114,13 @@
         "sources": "ae7e723552709805f0b131d79773c1cec3e7b7476887a42574391534218a396c"
       },
       "version": "1.11.1006"
+    },
+    "com.amazonaws:aws-java-sdk-sts": {
+      "shasums": {
+        "jar": "29fca58275ca53cbfe1037c71c0c245ec78988bc4151e0026f6184b743a3bced",
+        "sources": "e19b7cbca6634aa2c4843bc444d01064d6d495bb9899b4a451d5358c33d0bdf3"
+      },
+      "version": "1.11.960"
     },
     "com.amazonaws:dynamodb-lock-client": {
       "shasums": {
@@ -360,6 +370,10 @@
       "com.amazonaws:aws-java-sdk-kms",
       "com.amazonaws:jmespath-java"
     ],
+    "com.amazonaws:aws-java-sdk-sts": [
+      "com.amazonaws:aws-java-sdk-core",
+      "com.amazonaws:jmespath-java"
+    ],
     "com.amazonaws:dynamodb-lock-client": [
       "com.amazonaws:aws-java-sdk-core",
       "com.amazonaws:aws-java-sdk-dynamodb",
@@ -574,6 +588,15 @@
       "com.amazonaws.services.s3.transfer.internal.future",
       "com.amazonaws.services.s3.transfer.model",
       "com.amazonaws.services.s3.waiters"
+    ],
+    "com.amazonaws:aws-java-sdk-sts": [
+      "com.amazonaws.auth",
+      "com.amazonaws.auth.policy",
+      "com.amazonaws.auth.policy.actions",
+      "com.amazonaws.services.securitytoken",
+      "com.amazonaws.services.securitytoken.internal",
+      "com.amazonaws.services.securitytoken.model",
+      "com.amazonaws.services.securitytoken.model.transform"
     ],
     "com.amazonaws:dynamodb-lock-client": [
       "com.amazonaws.services.dynamodbv2",
@@ -1320,6 +1343,8 @@
       "com.amazonaws:aws-java-sdk-kms:jar:sources",
       "com.amazonaws:aws-java-sdk-s3",
       "com.amazonaws:aws-java-sdk-s3:jar:sources",
+      "com.amazonaws:aws-java-sdk-sts",
+      "com.amazonaws:aws-java-sdk-sts:jar:sources",
       "com.amazonaws:dynamodb-lock-client",
       "com.amazonaws:dynamodb-lock-client:jar:sources",
       "com.amazonaws:jmespath-java",
