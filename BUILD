@@ -18,6 +18,7 @@ gerrit_plugin(
     resources = glob(["src/main/resources/**/*"]),
     deps = [
         ":global-refdb-neverlink",
+        "//plugins/gerrit-bsl-license",
         "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_core",
         "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_aws_java_sdk_dynamodb",
         "@aws_dynamodb_refdb_plugin_deps//:com_amazonaws_dynamodb_lock_client",
